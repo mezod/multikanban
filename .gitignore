@@ -1,0 +1,4 @@
+app/scripts/vendor
+node_modules
+dist
+bower_components
