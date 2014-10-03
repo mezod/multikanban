@@ -5,6 +5,7 @@
     "requirejs": "latest",
     "jquery": "latest",
     "backbone-amd": "latest",
-    "underscore-amd": "latest"
+    "underscore-amd": "latest",
+    "bootstrap": "~3.2.0"
   }
 }
