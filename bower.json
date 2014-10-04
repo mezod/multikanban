@@ -6,6 +6,7 @@
     "jquery": "latest",
     "backbone-amd": "latest",
     "underscore-amd": "latest",
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.2.0",
+    "backbone.marionette": "~2.2.1"
   }
 }

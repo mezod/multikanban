@@ -25,12 +25,26 @@ module.exports = function(grunt) {
     less: {
         development: {
             options: {
-              compress: true,  //minifying the result
+              compress: false,  // no minification in dev
             },
             files: {
-              //compiling base.less into main.min.css
-              "./dist/main.min.css":"./app/styles/base.less"
+              //compiling base.less into styles.css
+              "./app/styles/styles.css":"./app/styles/base.less"
             }
+        },
+        production: {
+          options: {
+            cleancss: true, // minify css
+            // compress: true, // minify css
+            modifyVars: {
+              imgPath: '"http://mycdn.com/path/to/images"',
+              bgColor: 'red'
+            }
+          },
+          files: {
+            //compiling base.less into main.min.css
+            "./dist/main.min.css": "./app/styles/base.less"
+          }
         }
     },
     requirejs: {
