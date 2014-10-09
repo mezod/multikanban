@@ -36,10 +36,6 @@ module.exports = function(grunt) {
           options: {
             cleancss: true, // minify css
             // compress: true, // minify css
-            modifyVars: {
-              imgPath: '"http://mycdn.com/path/to/images"',
-              bgColor: 'red'
-            }
           },
           files: {
             //compiling base.less into main.min.css
