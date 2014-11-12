@@ -1,3 +1,6 @@
+body {
+  background-color: white;
+}
 /* Bootstrap */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
@@ -6163,7 +6166,4 @@ button.close {
   .hidden-print {
     display: none !important;
   }
-}
-body {
-  background-color: black;
 }
