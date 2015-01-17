@@ -3,7 +3,8 @@ define(["marionette"], function(Marionette){
 	var App = new Marionette.Application();
 
 	App.addRegions({
-		menuRegion: "#menu-region",
+		headerRegion: "#header",
+		footerRegion: "#footer",
 		mainRegion: "#main-region"
 	});
 

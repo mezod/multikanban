@@ -12,7 +12,7 @@ define([
 						collection: kanbans
 					});
 
-					App.menuRegion.show(kanbansListView);
+					App.headerRegion.show(kanbansListView);
 				});
 			}
 		}

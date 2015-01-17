@@ -26,6 +26,6 @@ require.config({
   // deps: ['app']
 });
 
-require(['app',"apps/menu/menu_app"], function(App) {
+require(['app',"apps/menu/menu_app","apps/footer/footer_app"], function(App) {
   App.start();
 });

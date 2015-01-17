@@ -6179,3 +6179,11 @@ body {
   width: 240px;
   z-index: 1030;
 }
+#footer {
+  bottom: 10px;
+  font-size: 12px;
+  padding: 0 20px;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
