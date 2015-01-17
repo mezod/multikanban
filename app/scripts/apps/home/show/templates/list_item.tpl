@@ -1,0 +1,1 @@
+<%- date %> Completed the task <%- task %> from <%- kanban %>

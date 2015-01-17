@@ -10,10 +10,10 @@ define(["marionette"], function(Marionette){
 
 	App.on("start", function(){
 	    if(Backbone.history){
-	      
 	      	console.log("App started!")
-	        Backbone.history.start();
-	  
+	        require(["apps/home/home_app"], function(){
+	        	Backbone.history.start();
+	        }); 
 	    }
 	});
 
