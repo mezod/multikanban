@@ -6193,3 +6193,18 @@ body {
   overflow: hidden;
   position: relative;
 }
+#main-region #kanban-header {
+  width: 100%;
+  height: 100px;
+  float: left;
+  background-color: red;
+  border-bottom: 1px solid #ddd;
+}
+#main-region #kanban-board .column {
+  float: left;
+  width: 20%;
+  border-left: 1px solid #ddd;
+}
+#main-region #kanban-board #doing {
+  height: calc(0%);
+}

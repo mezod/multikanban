@@ -12,6 +12,14 @@ define([
 						collection: kanbans
 					});
 
+					kanbansListView.on("brand:clicked", function(){
+						App.trigger("home:show");
+					});
+
+					kanbansListView.on("kanban:clicked", function(){
+						App.trigger("kanban:show");
+					});
+
 					App.headerRegion.show(kanbansListView);
 				});
 			}

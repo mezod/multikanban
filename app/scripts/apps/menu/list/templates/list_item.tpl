@@ -1,1 +1,1 @@
-<a href="#"><%- name %></a>
+<a href="#<%- url %>"><%- name %></a>

@@ -30,4 +30,26 @@ body {
     overflow: hidden;
     position: relative;
 
+    #kanban-header{
+
+    	width: 100%;
+    	height: 100px;
+    	float: left;
+    	background-color: red;
+    	border-bottom: 1px solid #ddd;
+    }
+
+    #kanban-board{
+
+
+    	.column{
+    		float: left;
+    		width: 20%;
+    		border-left: 1px solid #ddd;
+    	}
+
+    	#doing{
+    		height: calc(50% - 50px);
+    	}
+    }
 }

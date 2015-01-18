@@ -15,6 +15,21 @@ define([
 			template: listTpl,
 			childView: View.Kanban,
 
+			events: {
+		        "click a.brand": "brandClicked",
+		        "click li a": "kanbanClicked"
+		    },
+
+		    brandClicked: function(e){
+		        e.preventDefault();
+		        this.trigger("brand:clicked");
+		    },
+
+		    kanbanClicked: function(e){
+		    	e.preventDefault();
+		        this.trigger("kanban:clicked");
+		    },
+
 			// Adds the list of kanbans before the add kanban button
 			attachHtml: function(collectionView, itemView){
 

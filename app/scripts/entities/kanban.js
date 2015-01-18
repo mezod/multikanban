@@ -20,8 +20,8 @@ define([
     // Dummy kanbans
     var initializeKanbans = function(){
       Entities.kanbans = new Entities.KanbanCollection([
-        { name: "general" },
-        { name: "personal blog" }
+        { name: "general", url: "kanban"},
+        { name: "personal blog", url: "kanban"}
       ]);
     };
 

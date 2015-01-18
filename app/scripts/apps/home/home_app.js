@@ -17,11 +17,8 @@ define([
       }
     };
 
-    // HomeApp.on("start", function(){
-    //   API.listCompletedTasks();
-    // });
-    HomeApp.on("home:show", function(){
-      HomeApp.navigate("home");
+    App.on("home:show", function(){
+      App.navigate("home");
       API.listCompletedTasks();
     });
 
