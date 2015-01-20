@@ -6165,8 +6165,94 @@ button.close {
   }
 }
 /* Multikanban */
+@font-face {
+  font-family: ubuntu-B;
+  src: url(../fonts/ubuntu/Ubuntu-B.ttf);
+}
+@font-face {
+  font-family: ubuntu-Bl;
+  src: url(../fonts/ubuntu/Ubuntu-Bl.ttf);
+}
+@font-face {
+  font-family: ubuntu-C;
+  src: url(../fonts/ubuntu/Ubuntu-C.ttf);
+}
+@font-face {
+  font-family: ubuntu-L;
+  src: url(../fonts/ubuntu/Ubuntu-L.ttf);
+}
+@font-face {
+  font-family: ubuntu-Ll;
+  src: url(../fonts/ubuntu/Ubuntu-Ll.ttf);
+}
+@font-face {
+  font-family: ubuntu-M;
+  src: url(../fonts/ubuntu/Ubuntu-M.ttf);
+}
+@font-face {
+  font-family: ubuntu-Ml;
+  src: url(../fonts/ubuntu/Ubuntu-Ml.ttf);
+}
+@font-face {
+  font-family: ubuntu-R;
+  src: url(../fonts/ubuntu/Ubuntu-R.ttf);
+}
+@font-face {
+  font-family: ubuntu-Rl;
+  src: url(../fonts/ubuntu/Ubuntu-Rl.ttf);
+}
+@font-face {
+  font-family: opensans-Bold;
+  src: url(../fonts/open-sans/OpenSans-Bold.ttf);
+}
+@font-face {
+  font-family: opensans-BoldItalic;
+  src: url(../fonts/open-sans/OpenSans-BoldItalic.ttf);
+}
+@font-face {
+  font-family: opensans-ExtraBold;
+  src: url(../fonts/open-sans/OpenSans-ExtraBold.ttf);
+}
+@font-face {
+  font-family: opensans-ExtraBoldItalic;
+  src: url(../fonts/open-sans/OpenSans-ExtraBoldItalic.ttf);
+}
+@font-face {
+  font-family: opensans-Italic;
+  src: url(../fonts/open-sans/OpenSans-Italic.ttf);
+}
+@font-face {
+  font-family: opensans-Light;
+  src: url(../fonts/open-sans/OpenSans-Light.ttf);
+}
+@font-face {
+  font-family: opensans-LightItalic;
+  src: url(../fonts/open-sans/OpenSans-LightItalic.ttf);
+}
+@font-face {
+  font-family: opensans-Regular;
+  src: url(../fonts/open-sans/OpenSans-Regular.ttf);
+}
+@font-face {
+  font-family: opensans-Semibold;
+  src: url(../fonts/open-sans/OpenSans-Semibold.ttf);
+}
+@font-face {
+  font-family: opensans-SemiboldItalic;
+  src: url(../fonts/open-sans/OpenSans-SemiboldItalic.ttf);
+}
 body {
   background-color: white;
+  font-family: "opensans-Light";
+}
+body ul {
+  margin: 0;
+  padding: 0;
+}
+body a:hover,
+body a:focus {
+  text-decoration: none;
+  outline: none;
 }
 #menu-region {
   background: none repeat scroll 0 0 #27ae60;
@@ -6179,6 +6265,92 @@ body {
   width: 240px;
   z-index: 1030;
 }
+#menu-region a {
+  color: white;
+}
+#menu-region a:hover,
+#menu-region a:focus {
+  text-decoration: none;
+  outline: none;
+}
+#menu-region aside .glyphicon {
+  font-size: 22px;
+  margin-top: 10px;
+}
+#menu-region aside .brand a {
+  font-family: 'ubuntu-R';
+  color: #fff;
+  font-size: 26px;
+  margin-left: 17px;
+}
+#menu-region aside .sitenav-item {
+  padding-right: 20px;
+  padding-left: 20px;
+  height: 40px;
+  cursor: pointer;
+}
+#menu-region aside .sitenav-profile {
+  background: none repeat scroll 0 0 #259955;
+  height: 40px;
+}
+#menu-region aside .sitenav-profile a:hover {
+  text-decoration: underline;
+}
+#menu-region aside .profile {
+  display: inline-block;
+  font-size: 16px;
+  padding: 7px 0px 0px 20px;
+}
+#menu-region aside .logout {
+  padding: 10px 20px 0px 0px;
+}
+#menu-region aside ul li a {
+  font-size: 16px;
+  display: block;
+  height: auto;
+  padding: 9px 20px;
+  transition: background 0.2s ease 0s;
+  width: 100%;
+  position: relative;
+}
+#menu-region aside ul li a:hover {
+  background: none repeat scroll 0 0 #2bc36b;
+}
+#menu-region aside ul li a.selected {
+  color: #27ae60;
+  background-color: #fff;
+}
+#menu-region aside ul li a .glyphicon {
+  font-size: 16px;
+  position: absolute;
+  top: 3px;
+}
+#menu-region aside ul li a .glyphicon:hover {
+  color: #259955;
+}
+#menu-region aside ul li a .glyphicon-pencil {
+  right: 40px;
+}
+#menu-region aside ul li a .glyphicon-remove {
+  right: 20px;
+}
+#menu-region aside ul li a .kanban-controls {
+  display: none;
+}
+#menu-region aside ul li a:hover .kanban-controls {
+  display: block;
+}
+#menu-region aside .newKanban {
+  cursor: pointer;
+  height: 40px;
+  background: none repeat scroll 0 0 #259955;
+}
+#menu-region aside .newKanban:hover {
+  background: none repeat scroll 0 0 #2bc36b;
+}
+#menu-region aside .newKanban span {
+  margin: 9px 0 0 109px;
+}
 #footer {
   bottom: 10px;
   font-size: 12px;
@@ -6186,6 +6358,25 @@ body {
   position: absolute;
   width: 100%;
   z-index: -1;
+}
+#footer ul {
+  list-style: outside none none;
+  text-transform: lowercase;
+}
+#footer ul li {
+  display: inline-block;
+}
+#footer ul li a:hover {
+  text-decoration: underline;
+}
+#footer ul li:after {
+  content: " ·\00a0";
+}
+#footer ul li:nth-child(4):after {
+  content: none;
+}
+#footer ul li:last-child:after {
+  content: none;
 }
 #main-region {
   height: 100%;
@@ -6195,16 +6386,16 @@ body {
 }
 #main-region #kanban-header {
   width: 100%;
-  height: 100px;
+  height: 80px;
   float: left;
   background-color: red;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #dddddd;
 }
 #main-region #kanban-board .column {
   float: left;
   width: 20%;
-  border-left: 1px solid #ddd;
+  border-left: 1px solid #dddddd;
 }
 #main-region #kanban-board #doing {
-  height: calc(0%);
+  height: calc(10%);
 }

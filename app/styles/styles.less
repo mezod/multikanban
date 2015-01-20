@@ -1,9 +1,24 @@
 body {
 	background-color: white;
+	font-family: "opensans-Light";
+
+	ul{
+		margin: 0;
+		padding: 0;
+	}
+
+	a{
+
+
+    	&:hover, &:focus{
+			text-decoration: none;
+			outline: none;
+		}
+    }
 }
 
 #menu-region{
-	background: none repeat scroll 0 0 #27ae60;
+	background: none repeat scroll 0 0 @green;
     color: #fff;
     font-weight: 200;
     height: 100%;
@@ -12,6 +27,120 @@ body {
     top: 0;
     width: 240px;
     z-index: 1030;
+
+    a{
+    	color: white;
+
+    	&:hover, &:focus{
+			text-decoration: none;
+			outline: none;
+		}
+    }
+    
+
+    aside{
+
+    	.glyphicon{
+    		font-size: 22px;
+    		margin-top: 10px;
+    	}
+
+	    .brand a{
+	    	font-family: 'ubuntu-R';
+	    	color: #fff;
+	    	font-size: 26px;
+	    	margin-left: 17px;
+	    }
+
+    	.sitenav-item{
+    		padding-right: 20px;
+    		padding-left: 20px;
+    		height: 40px;
+    		cursor: pointer;;
+    	}
+
+    	.sitenav-profile{
+    		background: none repeat scroll 0 0 @darkgreen;
+    		height: 40px;
+
+    		a:hover{
+    			text-decoration: underline;
+    		}
+    	}
+
+    	.profile{
+    		
+    		display: inline-block;
+    		font-size: 16px;
+    		padding: 7px 0px 0px 20px;
+    	}
+
+    	.logout{
+    		padding: 10px 20px 0px 0px;
+
+    	}
+
+		ul li a{
+			font-size: 16px;
+			display: block;
+		    height: auto;
+		    padding: 9px 20px;
+		    transition: background 0.2s ease 0s;
+		    width: 100%;
+		    position: relative;
+
+		    &:hover{
+		    	background: none repeat scroll 0 0 @lightgreen;
+		    }
+
+		    &.selected{
+		    	color: @green;
+		    	background-color: #fff;
+		    }
+
+		    .glyphicon{
+		    	font-size: 16px;
+		    	position: absolute;
+		    	top: 3px;
+
+		    	&:hover{
+		    		color: @darkgreen;
+		    	}
+		    }
+
+		    .glyphicon-pencil{
+		    	right: 40px;
+		    }
+
+		    .glyphicon-remove{
+		    	right: 20px;
+		    }
+
+		    .kanban-controls{
+		    	display: none;
+		    }
+
+		    &:hover .kanban-controls{
+		    	display: block;
+		    }
+		}
+
+		.newKanban{
+
+			cursor: pointer;
+			height: 40px;
+			background: none repeat scroll 0 0 @darkgreen;
+
+			&:hover{
+		    	background: none repeat scroll 0 0 @lightgreen;
+		    }
+
+		    span{
+		    	margin: 9px 0 0 109px;
+		    }
+		}
+
+	}
 }
 
 #footer{
@@ -21,6 +150,31 @@ body {
     position: absolute;
     width: 100%;
     z-index: -1;
+
+    ul{
+    	list-style: outside none none;
+    	text-transform: lowercase;
+
+    	li{
+    		display: inline-block;
+
+    		a:hover{
+    			text-decoration: underline;
+	    	}
+
+	    	&:after {
+			    content: " ·\00a0";
+			}
+
+			&:nth-child(4):after {
+			    content: none;
+			}
+
+			&:last-child:after {
+			    content: none;
+			}
+    	} 	
+    }
 }
 
 #main-region{
@@ -33,10 +187,10 @@ body {
     #kanban-header{
 
     	width: 100%;
-    	height: 100px;
+    	height: 80px;
     	float: left;
     	background-color: red;
-    	border-bottom: 1px solid #ddd;
+    	border-bottom: 1px solid @grey;
     }
 
     #kanban-board{
@@ -45,11 +199,11 @@ body {
     	.column{
     		float: left;
     		width: 20%;
-    		border-left: 1px solid #ddd;
+    		border-left: 1px solid @grey;
     	}
 
     	#doing{
-    		height: calc(50% - 50px);
+    		height: calc(50% - 40px);
     	}
     }
 }

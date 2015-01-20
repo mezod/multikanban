@@ -11,12 +11,13 @@ define([
 		});
 
 		View.Kanbans = Marionette.CompositeView.extend({
-			tagName: "ul",
+			tagName: "aside",
+			className: "sitenav",
 			template: listTpl,
 			childView: View.Kanban,
 
 			events: {
-		        "click a.brand": "brandClicked",
+		        "click .brand": "brandClicked",
 		        "click li a": "kanbanClicked"
 		    },
 
