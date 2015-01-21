@@ -27,13 +27,30 @@ define([
 
 		View.Task = Marionette.ItemView.extend({
 			template: taskTpl,
-			tagName: "li"
+			tagName: "li",
+			className: "task"
 		});
 
 		View.Column = Marionette.CompositeView.extend({
 			template: columnTpl,
 			childView: View.Task,
-			childViewContainer: 'ul'
+			childViewContainer: 'ul',
+
+			initialize: function(options){
+
+				this.columnName = options.columnName;
+				this.sortType = options.sortType;
+			},
+
+			serializeData: function(){
+
+				return {
+					columnName: this.columnName,
+					sortType: this.sortType
+				}
+			}
+
+
 		});
 	});
 

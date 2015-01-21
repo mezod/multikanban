@@ -1,3 +1,5 @@
-<h1>Kaban header</h1>
-<span>edit button</span>
-<a>Last edited: yesterday</a>
+<header>
+	<h1>Kaban header</h1>
+</header>
+<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+<a class="lastEdited">Last edited: yesterday</a>

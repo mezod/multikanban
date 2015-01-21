@@ -16,27 +16,39 @@ define([
 					var tasks = App.request("task:entities");
 
 					var backlog = new View.Column({
-						collection: tasks
+						collection: tasks,
+						columnName: "Backlog",
+						sortType: "list"
 					});
 
 					var todo = new View.Column({
-						collection: tasks
+						collection: tasks,
+						columnName: "To do",
+						sortType: "list"
 					});
 
 					var doing = new View.Column({
-						collection: tasks
+						collection: tasks,
+						columnName: "Doing",
+						sortType: "list"
 					});
 
 					var onhold = new View.Column({
-						collection: tasks
+						collection: tasks,
+						columnName: "On hold",
+						sortType: "list"
 					});
 
 					var done = new View.Column({
-						collection: tasks
+						collection: tasks,
+						columnName: "Done",
+						sortType: "date"
 					});
 
 					var archive = new View.Column({
-						collection: tasks
+						collection: tasks,
+						columnName: "Archive",
+						sortType: "date"
 					});
 
 					kanbanLayout.on("show", function(){

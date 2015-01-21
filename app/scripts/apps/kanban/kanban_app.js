@@ -19,7 +19,6 @@ define([
 
     App.on("kanban:show", function(){
       App.navigate("kanban");
-      console.log("weeee");
       API.showTasks();
     });
 

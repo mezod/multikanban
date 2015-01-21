@@ -26,6 +26,7 @@ module.exports = function(grunt) {
         development: {
             options: {
               compress: false,  // no minification in dev
+              strictMath: true
             },
             files: {
               //compiling base.less into styles.css
@@ -36,6 +37,7 @@ module.exports = function(grunt) {
           options: {
             cleancss: true, // minify css
             // compress: true, // minify css
+            strictMath: true
           },
           files: {
             //compiling base.less into main.min.css

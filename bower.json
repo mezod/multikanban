@@ -9,6 +9,7 @@
     "bootstrap": "~3.2.0",
     "backbone.marionette": "~2.2.1",
     "requirejs-underscore-tpl": "*",
-    "requirejs-text": "~2.0.13"
+    "requirejs-text": "~2.0.13",
+    "normalize.css": "~3.0.2"
   }
 }

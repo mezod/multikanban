@@ -7,6 +7,7 @@ define([
 
 		View.Home = Marionette.ItemView.extend({
 			tagName: "li",
+			className: "activity-item",
 			template: listItemTpl
 		});
 
