@@ -218,9 +218,21 @@ html, body{
     	}
     }
 
+     > div{
+    	height: 100%;
+    	display: table;
+    	table-layout: fixed;
+    	width: 100%;
+    }
+
     #kanban-header{
 
     	border-bottom: 1px solid @grey;
+    	display: table-caption;
+
+    	> div{
+    		width: 100%;
+    	}
 
     	header{
     		display: inline-block;
@@ -249,20 +261,17 @@ html, body{
     	}
     }
 
-    > div{
-    	height: 100%;
-    }
-
     #kanban-board{
     	height: calc(100% - 80px);
-    	display: flex;
-    	flex-flow: column wrap;
+    	display:table-row;
 
     	.column{
-    		float: left;
     		width: 20%;
     		border-left: 1px solid @grey;
-    		flex: 1 1 100%;
+    		display:table-cell;
+    		height:100%;
+    		vertical-align:top;
+    		
     		
     		a{ 
     			color: #333;
@@ -328,8 +337,42 @@ html, body{
 	    			line-height: 40px;
 	    		}
 
-	    		div:first-child{
-	    			border-bottom: 1px solid @grey;
+	    		.task{
+
+	    			div:first-child{
+	    				border-bottom: 1px solid @grey;
+
+	    				a{
+	    					padding: 10px 15px 10px 0px;
+	    					border-right: 1px solid @grey;
+	    				}
+	    			}
+
+	    			&:hover{
+	    				background-color: @lightgrey;
+	    				cursor: move;
+
+	    				span{
+	    					display: inline-block;
+	    				}
+	    			}
+
+	    			span{
+	    				color: #333;
+	    				float: right;
+	    				padding: 12px;
+	    				border-left: 1px solid @grey;
+	    				display: none;
+
+	    				&:hover{
+	    					color: @green;
+	    					cursor: pointer;
+	    				}
+	    			}
+
+	    			a{
+	    				margin-left: 10px;
+	    			}
 	    		}
     		}
     		
@@ -340,12 +383,26 @@ html, body{
     	}
 
     	#doing{
-    		flex: 0 1 200px;
+    		display: inline-block;
+    		width: 100%;
+    		height: 240px;
+
+    		ul{
+    			overflow-y: scroll;
+    			height: 200px;
+    		}
+    		
     	}
 
     	#onhold{
-    		border-top: 1px solid @grey;
-    		flex: 0 1 calc(100% - 201px);
+    		display:inline-block;
+    		width:100%;
+    		height:calc(100% - 240px);
+
+    		.column-header{
+    			border-top: 1px solid @grey;
+    			padding: 6px 0 5px;
+    		}
     	}
     }
 }

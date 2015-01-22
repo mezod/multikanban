@@ -39,6 +39,16 @@ define([
         "dateCompleted": null,
         "position": "0",
         "state": "backlog"
+        },
+        {
+        "id": "16",
+        "user_id": "2",
+        "kanban_id": "7",
+        "text": "Write the summary",
+        "dateCreated": "2015-01-07",
+        "dateCompleted": null,
+        "position": "0",
+        "state": "backlog"
         }
       ]);
     };
