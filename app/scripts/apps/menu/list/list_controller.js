@@ -12,7 +12,7 @@ define([
 						collection: kanbans
 					});
 
-					kanbansListView.on("brand:clicked", function(){
+					kanbansListView.on("home:clicked", function(){
 						App.trigger("home:show");
 					});
 
@@ -20,7 +20,7 @@ define([
 						App.trigger("kanban:show");
 					});
 
-					App.headerRegion.show(kanbansListView);
+					App.mainLayout.headerRegion.show(kanbansListView);
 				});
 			}
 		}

@@ -12,7 +12,7 @@ define([
 						collection: footers
 					});
 
-					App.footerRegion.show(footersShowView);
+					App.mainLayout.footerRegion.show(footersShowView);
 				});
 			}
 		}

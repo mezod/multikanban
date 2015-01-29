@@ -6934,10 +6934,19 @@ body {
 }
 #main-region #kanban-board .column ul .task div:first-child {
   border-bottom: 1px solid #dddddd;
+  line-height: 36px;
 }
 #main-region #kanban-board .column ul .task div:first-child a {
-  padding: 10px 15px 10px 0px;
+  padding: 13px 9px 14px 0px;
   border-right: 1px solid #dddddd;
+  font-size: 9px;
+}
+#main-region #kanban-board .column ul .task div:nth-child(2) a {
+  font-family: "opensans-Regular";
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 #main-region #kanban-board .column ul .task:hover {
   background-color: #eeeeee;
@@ -6958,7 +6967,7 @@ body {
   cursor: pointer;
 }
 #main-region #kanban-board .column ul .task a {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 #main-region #kanban-board .column:first-child {
   border-left: 0px;

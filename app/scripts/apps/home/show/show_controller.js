@@ -12,7 +12,7 @@ define([
 						collection: completedTasks
 					});
 
-					App.mainRegion.show(homeShowView);
+					App.mainLayout.mainRegion.show(homeShowView);
 				});
 			}
 		}

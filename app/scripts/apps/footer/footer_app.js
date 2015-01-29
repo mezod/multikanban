@@ -1,7 +1,7 @@
 define([
   "app"
 ], function(App){
-  App.module("FooterApp", function(Footer, App, Backbone, Marionette, $, _){
+  App.module("FooterApp", function(FooterApp, App, Backbone, Marionette, $, _){
     var API = {
       listFooters: function(){
         require(["apps/footer/show/show_controller"], function(ShowController){
@@ -10,7 +10,12 @@ define([
       }
     };
 
-    Footer.on("start", function(){
+    // Footer.on("start", function(){
+    //   API.listFooters();
+    // });
+    App.on("footer:show", function(){
+        console.log("footer:show");
+        
       API.listFooters();
     });
   });

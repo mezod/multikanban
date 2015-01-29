@@ -12,6 +12,7 @@ define([
     var API = {
       listCompletedTasks: function(){
         require(["apps/home/show/show_controller"], function(ShowController){
+          App.trigger("create:layout");
           ShowController.listCompletedTasks();
         });
       }

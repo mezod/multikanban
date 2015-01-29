@@ -12,6 +12,7 @@ define([
     var API = {
       showTasks: function(){
         require(["apps/kanban/show/show_controller"], function(ShowController){
+          App.trigger("create:layout");
           ShowController.showTasks();
         });
       }

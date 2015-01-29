@@ -17,13 +17,14 @@ define([
 			childView: View.Kanban,
 
 			events: {
-		        "click .brand": "brandClicked",
+		        "click .brand": "homeClicked",
+		        "click .profile": "homeClicked",
 		        "click li a": "kanbanClicked"
 		    },
 
-		    brandClicked: function(e){
+		    homeClicked: function(e){
 		        e.preventDefault();
-		        this.trigger("brand:clicked");
+		        this.trigger("home:clicked");
 		    },
 
 		    kanbanClicked: function(e){

@@ -61,7 +61,7 @@ define([
 						kanbanLayout.archive.show(archive);
 					});
 
-					App.mainRegion.show(kanbanLayout);
+					App.mainLayout.mainRegion.show(kanbanLayout);
 					
 				});
 			}
