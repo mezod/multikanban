@@ -20,7 +20,14 @@ define(["marionette"], function(Marionette){
 	App.on("start", function(){
 	    if(Backbone.history){
 	      	console.log("App started!")
-	        require(["apps/home/home_app", "apps/kanban/kanban_app", "apps/landing/landing_app", "apps/menu/menu_app", "apps/main/main_app"], function(){
+	        require([
+	        		"apps/home/home_app", 
+	        		"apps/kanban/kanban_app", 
+	        		"apps/landing/landing_app", 
+	        		"apps/menu/menu_app", 
+	        		"apps/main/main_app",
+	        		"apps/login/login_app"
+	        		], function(){
 	        	Backbone.history.start();
 	        }); 
 
