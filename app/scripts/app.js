@@ -26,7 +26,8 @@ define(["marionette"], function(Marionette){
 	        		"apps/landing/landing_app", 
 	        		"apps/menu/menu_app", 
 	        		"apps/main/main_app",
-	        		"apps/login/login_app"
+	        		"apps/login/login_app",
+	        		"apps/signup/signup_app"
 	        		], function(){
 	        	Backbone.history.start();
 	        }); 

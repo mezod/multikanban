@@ -17,7 +17,7 @@ define([
       }
     };
 
-    LandingApp.on("landing:show", function(){
+    App.on("landing:show", function(){
       console.log("weee");
       
       App.navigate("");

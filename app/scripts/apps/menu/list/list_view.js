@@ -19,7 +19,8 @@ define([
 			events: {
 		        "click .brand": "homeClicked",
 		        "click .profile": "homeClicked",
-		        "click li a": "kanbanClicked"
+		        "click li a": "kanbanClicked",
+		        "click .logout": "logoutClicked"
 		    },
 
 		    homeClicked: function(e){
@@ -32,6 +33,12 @@ define([
 		        this.trigger("kanban:clicked");
 		    },
 
+		    logoutClicked: function(e){
+		    	console.log("logout:clicked");
+		    	e.preventDefault();
+		    	this.trigger("logout:clicked");
+		    },
+
 			// Adds the list of kanbans before the add kanban button
 			attachHtml: function(collectionView, itemView){
 
@@ -41,7 +48,7 @@ define([
 			serializeData: function(){
 
 				return {
-					nickname: 'mezod',
+					nickname: JSON.parse(window.localStorage.getItem('multikanban user')).username,
 				}
 			}
 

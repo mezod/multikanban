@@ -20,6 +20,12 @@ define([
 						App.trigger("kanban:show");
 					});
 
+					kanbansListView.on("logout:clicked", function(){
+
+						window.localStorage.removeItem('multikanban user');
+						App.trigger("landing:show");
+					});
+
 					App.mainLayout.headerRegion.show(kanbansListView);
 				});
 			}

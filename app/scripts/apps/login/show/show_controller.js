@@ -23,21 +23,35 @@ define([
 			            url:url,
 			            type:'GET',
 			            dataType:"json",
+			            contentType: "application/json",
 			            //data: formValues,
 			            headers: { 'PHP_AUTH_USER' : formValues.username, 'PHP_AUTH_PW' : formValues.password },
 			            success:function (data) {
 			                console.log(["Login request details: ", data]);
 			               
 			                if(data.error) {  // If there is an error, show the error messages
-			                    console.log('error logging in');
+			                    console.log('error data');
 			                }
-			                else { // If not, send them back to the home page
+			                else { // If not, send them to the home page
+			                	console.log(data);
+
+			                	// Saving the user in the localStorage
+			                	window.localStorage.setItem('multikanban user', JSON.stringify(data));
+
 			                    App.trigger("home:show");
 			                }
+			            },
+			            error:function(){
+			            	console.log('error logging in');
+			            },
+			            statusCode: {
+			            	401: function(){
+			            		console.log('401 invalid credentials');
+			            	}
 			            }
 			        });
 
-					//App.loggedIn = true;
+			
 					
 				});
 
