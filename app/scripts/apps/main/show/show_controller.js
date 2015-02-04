@@ -26,15 +26,6 @@ define([
 					});    
 
 			    });	
-			},
-
-			retrieveUser: function(){
-
-				console.log(window.localStorage["multikanban user"]);
-				if(window.localStorage["multikanban user"]){
-					console.log('localStorage exists');
-					App.loggedInUser = JSON.parse(window.localStorage.getItem('multikanban user'));
-				}
 			}
 		}
 	});

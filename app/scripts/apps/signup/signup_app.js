@@ -6,20 +6,26 @@ define([
     SignupApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
         "signup" : "showSignup"
+      },
+
+      execute: function(attributes, options){
+
+        if(!! App.loggedInUser){
+          console.log("show home");
+          App.trigger("home:show");
+          return;
+        }
+
+        return Marionette.AppRouter.prototype.execute.call(this, attributes, options);
       }
     });
 
     var API = {
       showSignup: function(){
 
-        if(!! App.loggedInUser){
-            App.trigger("show:home");
-        }else{
-            require(["apps/signup/show/show_controller"], function(ShowController){
-              ShowController.showSignup();
-            });
-        }
-        
+        require(["apps/signup/show/show_controller"], function(ShowController){
+          ShowController.showSignup();
+        });    
       }
     };
 

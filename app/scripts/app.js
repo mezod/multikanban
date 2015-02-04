@@ -12,8 +12,7 @@ define(["marionette"], function(Marionette){
 	};
 
     App.getCurrentRoute = function(){
-    	console.log(Backbone.history);
-    	console.log(Backbone.history.fragment);
+
     	return Backbone.history.fragment;
     };
 
@@ -21,22 +20,23 @@ define(["marionette"], function(Marionette){
 	    if(Backbone.history){
 	      	console.log("App started!")
 	        require([
+	        		"apps/main/main_app",
 	        		"apps/home/home_app", 
 	        		"apps/kanban/kanban_app", 
 	        		"apps/landing/landing_app", 
 	        		"apps/menu/menu_app", 
-	        		"apps/main/main_app",
 	        		"apps/login/login_app",
 	        		"apps/signup/signup_app"
 	        		], function(){
+	        	if(window.localStorage["multikanban user"]){
+					console.log('localStorage exists');
+					App.loggedInUser = JSON.parse(window.localStorage.getItem('multikanban user'));
+				}
+
 	        	Backbone.history.start();
 
-	        	var currentRoute = App.getCurrentRoute();
-	        	if(currentRoute === undefined){
+	        	if(App.getCurrentRoute() === undefined){
 		        	console.log("undefined current route");
-		        	App.trigger("landing:show");
-		        }else if(currentRoute != "login" && currentRoute != "signup" && (App.loggedInUser === undefined)){
-		        	console.log('go to landing');
 		        	App.trigger("landing:show");
 		        }
 	        }); 

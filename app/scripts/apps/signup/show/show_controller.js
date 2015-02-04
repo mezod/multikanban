@@ -44,8 +44,17 @@ define([
 			                    App.trigger("home:show");
 			                }
 			            },
-			            error:function(){
-			            	console.log('error logging in');
+			            error:function(data){
+			            	if(data.responseJSON.errors){
+			            		console.log(data.responseJSON.errors);
+
+			            		for (var key in data.responseJSON.errors){
+			            			$('#signup-error').append('<li>'+ data.responseJSON.errors[key] +'</li>');
+			            		}
+			
+			            	}else if(data.responseJSON.status == '409' ){
+			            		$('#signup-error').append('<li>This account already exists</li>');
+			            	}	
 			            }
 			        });
 					

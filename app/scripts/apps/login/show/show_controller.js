@@ -41,8 +41,8 @@ define([
 			                    App.trigger("home:show");
 			                }
 			            },
-			            error:function(){
-			            	console.log('error logging in');
+			            error:function(data){
+			            	$('#login-error').append('<li>Invalid username or password.</li>');
 			            },
 			            statusCode: {
 			            	401: function(){

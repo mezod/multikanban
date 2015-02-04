@@ -6,13 +6,24 @@ define([
     KanbanApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
         "kanban" : "showTasks"
+      },
+
+      execute: function(attributes, options){
+
+        if(App.loggedInUser === undefined){
+          App.trigger("landing:show");
+          return;
+        } 
+
+        //redefine execute must call original execute
+        return Marionette.AppRouter.prototype.execute.call(this, attributes, options);
       }
     });
 
     var API = {
       showTasks: function(){
         require(["apps/kanban/show/show_controller"], function(ShowController){
-          App.trigger("create:layout");
+          if(!App.mainLayout || App.mainLayout.isDestroyed) App.trigger("create:layout");
           ShowController.showTasks();
         });
       }
