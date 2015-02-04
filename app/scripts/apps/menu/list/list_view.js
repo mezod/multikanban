@@ -48,7 +48,7 @@ define([
 			serializeData: function(){
 
 				return {
-					nickname: JSON.parse(window.localStorage.getItem('multikanban user')).username,
+					nickname: App.loggedInUser.username,
 				}
 			}
 

@@ -12,7 +12,8 @@ define([
     var API = {
       showLogin: function(){
 
-        if(!! App.loggedIn){
+        if(!! App.loggedInUser){
+          console.log("show home");
             App.trigger("show:home");
         }else{
             require(["apps/login/show/show_controller"], function(ShowController){

@@ -12,7 +12,7 @@ define([
     var API = {
       showSignup: function(){
 
-        if(!! App.loggedIn){
+        if(!! App.loggedInUser){
             App.trigger("show:home");
         }else{
             require(["apps/signup/show/show_controller"], function(ShowController){

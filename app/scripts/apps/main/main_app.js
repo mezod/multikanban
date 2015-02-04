@@ -8,11 +8,18 @@ define([
         require(["apps/main/show/show_controller"], function(ShowController){
           ShowController.createLayout();
         });
+      },
+
+      retrieveUser: function(){
+        require(["apps/main/show/show_controller"], function(ShowController){
+          ShowController.retrieveUser();
+        });
       }
     };
 
     MainApp.on("start", function(){
       API.createLayout();
+      API.retrieveUser();
     });
   
     return App.MainApp;

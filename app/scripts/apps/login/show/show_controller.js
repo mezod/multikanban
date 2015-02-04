@@ -37,7 +37,7 @@ define([
 
 			                	// Saving the user in the localStorage
 			                	window.localStorage.setItem('multikanban user', JSON.stringify(data));
-
+			                	App.loggedInUser = data;
 			                    App.trigger("home:show");
 			                }
 			            },

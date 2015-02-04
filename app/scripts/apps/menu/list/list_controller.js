@@ -23,6 +23,7 @@ define([
 					kanbansListView.on("logout:clicked", function(){
 
 						window.localStorage.removeItem('multikanban user');
+						App.loggedInUser = undefined;
 						App.trigger("landing:show");
 					});
 

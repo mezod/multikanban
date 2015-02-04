@@ -30,14 +30,23 @@ define(["marionette"], function(Marionette){
 	        		"apps/signup/signup_app"
 	        		], function(){
 	        	Backbone.history.start();
+
+	        	var currentRoute = App.getCurrentRoute();
+	        	if(currentRoute === undefined){
+		        	console.log("undefined current route");
+		        	App.trigger("landing:show");
+		        }else if(currentRoute != "login" && currentRoute != "signup" && (App.loggedInUser === undefined)){
+		        	console.log('go to landing');
+		        	App.trigger("landing:show");
+		        }
 	        }); 
 
-	        // if(this.getCurrentRoute() === undefined){
-	        // 	console.log("fragment");
-	        // 	App.trigger("landing:show");
-	        // }
+	        
 	    }
 	});
+
+	// Easing development by referencing the app to be used in console for debugging.
+	window.App = App;
 
 	return App;
 });

@@ -9,10 +9,7 @@ define([
         });
       }
     };
-
-    // Menu.on("start", function(){
-    //   API.listKanbans();
-    // });
+    
     App.on("menu:show", function(){
       console.log("menu:show");
       
