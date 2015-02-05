@@ -10,6 +10,7 @@ define([
     });
 
     Entities.KanbanCollection = Backbone.Collection.extend({
+      url: "../../multikanban-api/web/users/2/kanbans",
       model: Entities.Kanban,
 
       initialize: function(){
@@ -27,9 +28,19 @@ define([
 
     var API = {
       getKanbans: function(){
-        if(Entities.kanbans === undefined){
-          initializeKanbans();
-        }
+        // if(Entities.kanbans === undefined){
+        //   initializeKanbans();
+        // }
+        Entities.kanbans = new Entities.KanbanCollection();
+        Entities.kanbans.fetch({
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization','token ABCD123');
+          },
+          success: function(data){
+            console.log(data);
+          }
+        });
+
         return Entities.kanbans;
       }
     };
