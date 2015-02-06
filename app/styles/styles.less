@@ -46,7 +46,6 @@ html, body{
 
     	.glyphicon{
     		font-size: 22px;
-    		margin-top: 10px;
     	}
 
 	    .brand a{
@@ -122,6 +121,10 @@ html, body{
 
 		    .kanban-controls{
 		    	display: none;
+
+                .glyphicon{
+                    padding-top: 9px;
+                }
 		    }
 
 		    &:hover .kanban-controls{
@@ -144,6 +147,38 @@ html, body{
 		    }
 		}
 
+        .inputKanban{
+            height: 40px;
+            background: none repeat scroll 0 0 @darkgreen;
+            position: relative;
+            display: none;
+
+            &.light{
+                background: none repeat scroll 0 0 @lightgreen;   
+            }
+
+            input{
+                background: none repeat scroll 0 0 @darkgreen;
+                border: none;
+                height: 40px;
+                width: 87%;
+                font-size: 16px;
+                padding: 9px 10px 9px 20px;
+                float: left;
+
+                &.light{
+                    background: none repeat scroll 0 0 @lightgreen;   
+                }
+            }
+
+            .glyphicon{
+                margin-top: 9px;
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
 	}
 }
 

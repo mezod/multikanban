@@ -27,6 +27,20 @@ define([
 						App.trigger("landing:show");
 					});
 
+					kanbansListView.on("kanban:new", function(){
+		                var newKanban = App.request("kanban:entity:new");
+
+		                var view = new View.Kanban({
+		                	model: newKanban
+		                });
+
+		                view.on("kanban:submit", function(data){
+		               
+		                });
+
+		                ContactManager.dialogRegion.show(view);
+		            });
+
 					App.mainLayout.headerRegion.show(kanbansListView);
 				});
 			}

@@ -16,27 +16,28 @@ define([
 			template: listTpl,
 			childView: View.Kanban,
 
+			triggers: {
+				"click .brand": "home:clicked",
+				"click .profile": "home:clicked",
+				"click li a": "kanban:clicked",
+				"click .logout": "logout:clicked",
+				"click .submitKanban": "kanban:submit"
+			},
+
 			events: {
-		        "click .brand": "homeClicked",
-		        "click .profile": "homeClicked",
-		        "click li a": "kanbanClicked",
-		        "click .logout": "logoutClicked"
+		        "click .newKanban": "newClicked"
 		    },
 
-		    homeClicked: function(e){
-		        e.preventDefault();
-		        this.trigger("home:clicked");
-		    },
+		    newClicked: function(){
+		    	console.log("new:clicked");
 
-		    kanbanClicked: function(e){
-		    	e.preventDefault();
-		        this.trigger("kanban:clicked");
-		    },
-
-		    logoutClicked: function(e){
-		    	console.log("logout:clicked");
-		    	e.preventDefault();
-		    	this.trigger("logout:clicked");
+		    	$('.newKanban').slideUp(function(){
+		    		$('.inputKanban').slideDown(function(){
+		    			$('input').focus();
+		    		});
+		    	});
+		    	
+		    	App.trigger("kanban:new");
 		    },
 
 			// Adds the list of kanbans before the add kanban button
@@ -50,6 +51,16 @@ define([
 				return {
 					nickname: App.loggedInUser.username,
 				}
+			},
+
+			onShow : function(){
+
+				// highlighting whole row when hovering submit
+				$('.inputKanban .glyphicon').hover(function(){
+				    $(this).parent().toggleClass('light');
+				    $('.inputKanban input').toggleClass('light');
+
+				})
 			}
 
 		});

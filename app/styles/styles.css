@@ -6708,7 +6708,6 @@ body {
 }
 #menu-region aside .glyphicon {
   font-size: 22px;
-  margin-top: 10px;
 }
 #menu-region aside .brand a {
   font-family: 'ubuntu-R';
@@ -6770,6 +6769,9 @@ body {
 #menu-region aside ul li a .kanban-controls {
   display: none;
 }
+#menu-region aside ul li a .kanban-controls .glyphicon {
+  padding-top: 9px;
+}
 #menu-region aside ul li a:hover .kanban-controls {
   display: block;
 }
@@ -6783,6 +6785,33 @@ body {
 }
 #menu-region aside .newKanban span {
   margin: 9px 0 0 109px;
+}
+#menu-region aside .inputKanban {
+  height: 40px;
+  background: none repeat scroll 0 0 #259955;
+  position: relative;
+  display: none;
+}
+#menu-region aside .inputKanban.light {
+  background: none repeat scroll 0 0 #2bc36b;
+}
+#menu-region aside .inputKanban input {
+  background: none repeat scroll 0 0 #259955;
+  border: none;
+  height: 40px;
+  width: 87%;
+  font-size: 16px;
+  padding: 9px 10px 9px 20px;
+  float: left;
+}
+#menu-region aside .inputKanban input.light {
+  background: none repeat scroll 0 0 #2bc36b;
+}
+#menu-region aside .inputKanban .glyphicon {
+  margin-top: 9px;
+}
+#menu-region aside .inputKanban .glyphicon:hover {
+  cursor: pointer;
 }
 #footer {
   bottom: 10px;

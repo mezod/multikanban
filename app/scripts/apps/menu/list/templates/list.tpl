@@ -8,4 +8,5 @@
 </div>
 <ul>
 	<li class="newKanban"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></li>
+	<li class="inputKanban"><input type="text" name="newKanban" placeholder="new kanban name"/><span class="glyphicon glyphicon-plus submitKanban" aria-hidden="true"></span></li>
 </ul>
