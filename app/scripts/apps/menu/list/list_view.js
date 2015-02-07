@@ -7,7 +7,15 @@ define([
 
 		View.Kanban = Marionette.ItemView.extend({
 			tagName: "li",
-			template: listItemTpl
+			template: listItemTpl,
+
+			serializeData: function(){
+
+				var data = this.model.toJSON();
+				data.nickname = App.loggedInUser.username;
+					
+				return data;
+			}
 		});
 
 		View.Kanbans = Marionette.CompositeView.extend({
@@ -19,13 +27,22 @@ define([
 			triggers: {
 				"click .brand": "home:clicked",
 				"click .profile": "home:clicked",
-				"click li a": "kanban:clicked",
-				"click .logout": "logout:clicked",
-				"click .submitKanban": "kanban:submit"
+				"click .logout": "logout:clicked"
 			},
 
 			events: {
-		        "click .newKanban": "newClicked"
+				"click li a": "kanbanClicked",
+		        "click .newKanban": "newClicked",
+		        "click .submitKanban": "kanbanSubmitted"
+		    },		    
+
+		    kanbanClicked: function(e){
+		    	console.log("kanban:clicked");
+		    	e.preventDefault();
+		    	
+		    	var href = e.currentTarget.attributes[0].nodeValue;
+
+		    	this.trigger("kanban:clicked", href);
 		    },
 
 		    newClicked: function(){
@@ -37,7 +54,13 @@ define([
 		    		});
 		    	});
 		    	
-		    	App.trigger("kanban:new");
+		    	this.trigger("kanban:new");
+		    },
+
+		    kanbanSubmitted: function(){
+		    	var title = $('#newKanban').val();
+		    	console.log(title);
+		    	this.trigger("kanban:submit", title);
 		    },
 
 			// Adds the list of kanbans before the add kanban button

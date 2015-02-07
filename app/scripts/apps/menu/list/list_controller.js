@@ -16,8 +16,8 @@ define([
 						App.trigger("home:show");
 					});
 
-					kanbansListView.on("kanban:clicked", function(){
-						App.trigger("kanban:show");
+					kanbansListView.on("kanban:clicked", function(href){
+						App.trigger("kanban:show", href);
 					});
 
 					kanbansListView.on("logout:clicked", function(){
@@ -28,17 +28,24 @@ define([
 					});
 
 					kanbansListView.on("kanban:new", function(){
+						console.log("kanban:new");
 		                var newKanban = App.request("kanban:entity:new");
 
-		                var view = new View.Kanban({
-		                	model: newKanban
-		                });
+		                
 
-		                view.on("kanban:submit", function(data){
-		               
-		                });
+		                kanbansListView.on("kanban:submit", function(title){
+		                	console.log("kanban:submit");
+		                	var data = { 'title' : title };
 
-		                ContactManager.dialogRegion.show(view);
+		                	console.log(data);
+		               		if(newKanban.save(data)){
+		               			App.trigger("menu:show");
+		               			// go to new kanban
+		               			// show new kanban as selected
+		               		}else{
+		               			console.log('error saving kanban');
+		               		}
+		                });
 		            });
 
 					App.mainLayout.headerRegion.show(kanbansListView);
