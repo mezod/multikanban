@@ -5,8 +5,7 @@ define([
     
     KanbanApp.Router = Marionette.AppRouter.extend({
       appRoutes: {
-        ":username/:kanban" : "showTasks",
-        "kanban/kanbanid" : "showTasks"
+        "kanban/:id" : "showTasks"
       },
 
       execute: function(attributes, options){
@@ -31,8 +30,10 @@ define([
     };
 
     App.on("kanban:show", function(href){
+      console.log(href);
       //App.navigate("kanban");
-       App.navigate("kanban/kanbanid");
+      App.navigate(href);
+
 
       API.showTasks();
     });

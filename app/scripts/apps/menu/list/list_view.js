@@ -7,15 +7,7 @@ define([
 
 		View.Kanban = Marionette.ItemView.extend({
 			tagName: "li",
-			template: listItemTpl,
-
-			serializeData: function(){
-
-				var data = this.model.toJSON();
-				data.nickname = App.loggedInUser.username;
-					
-				return data;
-			}
+			template: listItemTpl
 		});
 
 		View.Kanbans = Marionette.CompositeView.extend({
