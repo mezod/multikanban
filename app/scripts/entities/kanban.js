@@ -28,13 +28,13 @@ define([
                 options.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans";
                 break;
             case "read":
-                options.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans"+model.get("id");
+                options.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+model.get("id");
                 break;
             case "delete":
-                options.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans"+model.get("id");
+                options.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+model.get("id");
                 break;
             case "update":
-                options.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans"+model.get("id");
+                options.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+model.get("id");
                 break;
         }
 

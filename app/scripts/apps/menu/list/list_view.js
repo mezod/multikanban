@@ -7,7 +7,11 @@ define([
 
 		View.Kanban = Marionette.ItemView.extend({
 			tagName: "li",
-			template: listItemTpl
+			template: listItemTpl,
+
+			triggers: {
+				"click .deleteKanban": "kanban:delete"
+			}
 		});
 
 		View.Kanbans = Marionette.CompositeView.extend({
@@ -19,7 +23,7 @@ define([
 			triggers: {
 				"click .brand": "home:clicked",
 				"click .profile": "home:clicked",
-				"click .logout": "logout:clicked"
+				"click .logout": "logout:clicked",
 			},
 
 			events: {

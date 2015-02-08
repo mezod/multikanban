@@ -48,6 +48,14 @@ define([
 		                });
 		            });
 
+		            kanbansListView.on("childview:kanban:delete", function(ChildView, args){
+		            	console.log("kanban:delete");
+		            	args.model.destroy();
+	               		App.trigger("menu:show");
+	               		//si el kanban que es borra es en el que s'esta anar a home
+	               		
+		            });
+
 					App.mainLayout.headerRegion.show(kanbansListView);
 				});
 			}
