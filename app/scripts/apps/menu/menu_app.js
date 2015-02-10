@@ -12,7 +12,7 @@ define([
     
     App.on("menu:show", function(){
       console.log("menu:show");
-      
+
       API.listKanbans();
     });
   });

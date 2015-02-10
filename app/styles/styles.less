@@ -92,7 +92,7 @@ html, body{
 		    width: 100%;
 		    position: relative;
 
-		    &:hover{
+		    &:hover, &.light{
 		    	background: none repeat scroll 0 0 @lightgreen;
 		    }
 
@@ -105,13 +105,14 @@ html, body{
 		    	font-size: 16px;
 		    	position: absolute;
 		    	top: 3px;
+                cursor: pointer;
 
 		    	&:hover{
 		    		color: @darkgreen;
 		    	}
 		    }
 
-		    .glyphicon-pencil{
+		    .glyphicon-pencil, .glyphicon-floppy-disk{
 		    	right: 40px;
 		    }
 

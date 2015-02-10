@@ -52,7 +52,7 @@ define([
 
       fetch: function(options){
         this.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans";
-
+        
         //Call Backbone's fetch
         return Backbone.Collection.prototype.fetch.call(this, options);
       }

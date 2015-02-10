@@ -38,21 +38,32 @@ define([
 		                	var data = { 'title' : title };
 
 		                	console.log(data);
-		               		if(newKanban.save(data)){
-		               			App.trigger("menu:show");
+		               		newKanban.save(data).then(function(){
+		               			kanbans.add(newKanban);
+		               		});
+
+
 		               			// go to new kanban
 		               			// show new kanban as selected
-		               		}else{
-		               			console.log('error saving kanban');
-		               		}
 		                });
 		            });
 
 		            kanbansListView.on("childview:kanban:delete", function(ChildView, args){
 		            	console.log("kanban:delete");
+
 		            	args.model.destroy();
-	               		App.trigger("menu:show");
 	               		//si el kanban que es borra es en el que s'esta anar a home
+	               		
+		            });
+
+		            kanbansListView.on("childview:kanban:edit", function(ChildView, model, title){
+		            	console.log("kanban:edit");
+		            	var data = { 'title' : title };
+		            	console.log("args");
+		            	console.log(model);
+		            	
+		            	model.save(data);
+	               		//App.trigger("menu:show");
 	               		
 		            });
 
