@@ -8,10 +8,14 @@ require.config({
     'backbone.wreqr': 'vendor/backbone.wreqr/lib/backbone.wreqr',
     marionette: 'vendor/backbone.marionette/lib/core/backbone.marionette',
     text: 'vendor/requirejs-text/text',
-    tpl: 'vendor/requirejs-underscore-tpl/underscore-tpl'
+    tpl: 'vendor/requirejs-underscore-tpl/underscore-tpl',
+    jqueryui: 'vendor/jquery-ui/jquery-ui.min',
   },
   shim: {
-  	underscore: {
+  	jqueryui: {
+      deps : ["jquery"]
+    },
+    underscore: {
   		exports: '_'
   	},
   	backbone: {

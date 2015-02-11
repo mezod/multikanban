@@ -6,7 +6,7 @@
 	<a href="home" class="profile">@<%- nickname %></a>
 	<a href="logout" class="logout pull-right">Log out</a>
 </div>
-<ul>
+<ul id="kanbanList">
 	<li class="newKanban"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></li>
 	<li class="inputKanban"><input id="newKanban" type="text" name="newKanban" placeholder="new kanban name"/><span class="glyphicon glyphicon-plus submitKanban" aria-hidden="true"></span></li>
 </ul>

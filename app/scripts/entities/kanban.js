@@ -25,16 +25,16 @@ define([
 
         switch (method) {
             case "create":
-                options.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans";
+                options.url = "/../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans";
                 break;
             case "read":
-                options.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+model.get("id");
+                options.url = "/../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+model.get("id");
                 break;
             case "delete":
-                options.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+model.get("id");
+                options.url = "/../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+model.get("id");
                 break;
             case "update":
-                options.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+model.get("id");
+                options.url = "/../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+model.get("id");
                 break;
         }
 
@@ -45,14 +45,15 @@ define([
 
     Entities.KanbanCollection = Backbone.Collection.extend({
       model: Entities.Kanban,
+      comparator: "position",
 
       initialize: function(){
 
       },
 
       fetch: function(options){
-        this.url = "../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans";
-        
+        this.url = "/../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans";
+
         //Call Backbone's fetch
         return Backbone.Collection.prototype.fetch.call(this, options);
       }

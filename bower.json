@@ -10,6 +10,7 @@
     "backbone.marionette": "~2.2.1",
     "requirejs-underscore-tpl": "*",
     "requirejs-text": "~2.0.13",
-    "normalize.css": "~3.0.2"
+    "normalize.css": "~3.0.2",
+    "jquery-ui": "~1.11.2"
   }
 }

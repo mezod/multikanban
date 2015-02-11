@@ -16,8 +16,16 @@ define([
 			events: {
 				"click .editKanban": "editKanban",
 				"click .submitEditKanban": "submitEditKanban",
-				"click .cancelEditKanban": "cancelEditKanban"
+				"click .cancelEditKanban": "cancelEditKanban",
+				"drop" : "drop"
 			},
+
+			
+		    drop: function(event, index) {
+		    	console.log("drop");
+		    	console.log("drop");
+		        this.$el.trigger('update-sort', [this.model, index]);
+		    }, 
 
 			editKanban: function(e){
 				console.log("kanban:edit");
@@ -131,18 +139,66 @@ define([
 			events: {
 				"click li a": "kanbanClicked",
 		        "click .newKanban": "newClicked",
-		        "click .submitKanban": "kanbanSubmitted"
-		    },		    
+		        "click .submitKanban": "kanbanSubmitted",
+		        "update-sort": "updateSort"
+		    },	
+
+		  
+		    // render: function() {
+		    //     this.$el.children().remove();
+		    //     this.collection.each(this.appendModelView, this);
+		    //     return this;
+		    // },    
+		    appendModelView: function(model) {
+		        var el = new Application.View.Item({model: model}).render().el;
+		        this.$el.append(el);
+		    },
+		    updateSort: function(event, model, pos) {            
+		        this.collection.remove(model);
+
+		        this.collection.each(function (model, index) {
+		            var position = index;
+		            if (index >= pos)
+		                position += 1;
+		            model.set('position', position);
+		        });            
+		        
+		        model.set('position', pos);
+		        this.collection.add(model, {at: pos});
+		        
+		        // to update positions on server:
+		        var ids = this.collection.pluck('id');
+		        $('#post-data').html('post ids to server: ' + ids.join(', '));
+		        
+		        this.render();
+		    },	    
 
 		    kanbanClicked: function(e){
 		    	console.log("kanban:clicked");
 		    	e.preventDefault();
 
 		    	if(e.currentTarget.attributes["contentEditable"]) return;
+
+		    	this.handleSelected(e);
 		    	
 		    	var href = e.currentTarget.attributes["href"].value;
 
 		    	this.trigger("kanban:clicked", href);
+		    },
+
+		    handleSelected: function(e){
+		    	// Styles the current kanban and unstyles the previously selected one
+		    	
+		    	$('aside li a').removeClass('selected'); 
+				$('aside li').each(function(){
+					console.log("weee");
+					console.log(this);
+					console.log(e.currentTarget.parentNode);
+					if(this === e.currentTarget.parentNode){
+						console.log("wee");
+				    	$(this).find('a').addClass('selected'); 
+				  	}
+				})
 		    },
 
 		    newClicked: function(){
@@ -198,7 +254,17 @@ define([
 				    $(this).parent().toggleClass('light');
 				    $('.inputKanban input').toggleClass('light');
 
-				})
+				});
+
+				require(["jqueryui"], function(){
+					console.log("kanban:sortable");
+					$('#kanbanList').sortable({
+				        stop: function(event, ui) {
+				            ui.item.trigger('drop', ui.item.index());
+				        }
+			   		});
+			   	});
+
 			}
 
 		});
