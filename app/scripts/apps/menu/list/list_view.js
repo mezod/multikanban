@@ -1,13 +1,15 @@
 define([
 	'app',
 	"tpl!apps/menu/list/templates/list.tpl",
-	"tpl!apps/menu/list/templates/list_item.tpl"
-], function(App, listTpl, listItemTpl){
+	"tpl!apps/menu/list/templates/list_item.tpl",
+	"tpl!apps/menu/list/templates/confirmDelete.tpl"
+], function(App, listTpl, listItemTpl, confirmDeleteTpl){
 	App.module("MenuApp.List.View", function(View, App, Backbone, Marionette, $, _){
 
 		View.Kanban = Marionette.ItemView.extend({
 			tagName: "li",
 			template: listItemTpl,
+			className: "kanbanItem",
 
 			triggers: {
 				"click .deleteKanban": "kanban:delete"
@@ -23,8 +25,8 @@ define([
 			
 		    drop: function(event, index) {
 		    	console.log("drop");
-		    	console.log("drop");
-		        this.$el.trigger('update-sort', [this.model, index]);
+		    	console.log(index);
+		        this.trigger('kanban:editPosition', this.model, index);
 		    }, 
 
 			editKanban: function(e){
@@ -139,39 +141,8 @@ define([
 			events: {
 				"click li a": "kanbanClicked",
 		        "click .newKanban": "newClicked",
-		        "click .submitKanban": "kanbanSubmitted",
-		        "update-sort": "updateSort"
-		    },	
-
-		  
-		    // render: function() {
-		    //     this.$el.children().remove();
-		    //     this.collection.each(this.appendModelView, this);
-		    //     return this;
-		    // },    
-		    appendModelView: function(model) {
-		        var el = new Application.View.Item({model: model}).render().el;
-		        this.$el.append(el);
-		    },
-		    updateSort: function(event, model, pos) {            
-		        this.collection.remove(model);
-
-		        this.collection.each(function (model, index) {
-		            var position = index;
-		            if (index >= pos)
-		                position += 1;
-		            model.set('position', position);
-		        });            
-		        
-		        model.set('position', pos);
-		        this.collection.add(model, {at: pos});
-		        
-		        // to update positions on server:
-		        var ids = this.collection.pluck('id');
-		        $('#post-data').html('post ids to server: ' + ids.join(', '));
-		        
-		        this.render();
-		    },	    
+		        "click .submitKanban": "kanbanSubmitted"
+		    },	 
 
 		    kanbanClicked: function(e){
 		    	console.log("kanban:clicked");
@@ -228,9 +199,11 @@ define([
 
 		    	window.setTimeout(function(){
 		    		$('.inputKanban').slideUp(function(){
-		    			$('.newKanban').slideDown();
-		    		}) }
-		    	, 500 );
+		    			$('.newKanban').slideDown(function(){
+		    				$('#newKanban').val('');
+		    			});
+		    		}); 
+		    	}, 500 );
 
 		    },
 
@@ -247,7 +220,7 @@ define([
 				}
 			},
 
-			onShow : function(){
+			onRender : function(){
 
 				// highlighting whole row when hovering submit
 				$('.inputKanban .glyphicon').hover(function(){
@@ -257,14 +230,28 @@ define([
 				});
 
 				require(["jqueryui"], function(){
-					console.log("kanban:sortable");
 					$('#kanbanList').sortable({
+						items: ".kanbanItem",
+						cancel: ".newKanban",
 				        stop: function(event, ui) {
 				            ui.item.trigger('drop', ui.item.index());
 				        }
 			   		});
 			   	});
 
+			}
+
+		});
+
+		View.confirmDeleteView = Marionette.ItemView.extend({
+			template: confirmDeleteTpl,
+
+			events: {
+				"click .deleteConfirmation": "deleteConfirmation"
+			},
+
+			deleteConfirmation: function(){
+				this.trigger("confirm:delete");
 			}
 
 		});

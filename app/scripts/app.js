@@ -26,7 +26,8 @@ define(["marionette"], function(Marionette){
 	        		"apps/landing/landing_app", 
 	        		"apps/menu/menu_app", 
 	        		"apps/login/login_app",
-	        		"apps/signup/signup_app"
+	        		"apps/signup/signup_app",
+	        		"apps/footer/footer_app"
 	        		], function(){
 	        	if(window.localStorage["multikanban user"]){
 					console.log('localStorage exists');

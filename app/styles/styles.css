@@ -6787,7 +6787,7 @@ body {
   background: none repeat scroll 0 0 #2bc36b;
 }
 #menu-region aside .newKanban span {
-  margin: 9px 0 0 109px;
+  margin: 8px 0 0 109px;
 }
 #menu-region aside .inputKanban {
   height: 40px;
@@ -6811,7 +6811,7 @@ body {
   background: none repeat scroll 0 0 #2bc36b;
 }
 #menu-region aside .inputKanban .glyphicon {
-  margin-top: 9px;
+  margin-top: 8px;
 }
 #menu-region aside .inputKanban .glyphicon:hover {
   cursor: pointer;
@@ -7021,4 +7021,18 @@ body {
 #main-region #kanban-board #onhold .column-header {
   border-top: 1px solid #dddddd;
   padding: 6px 0 5px;
+}
+#modal-region .modal {
+  display: block;
+}
+#modal-region .modal .modal-content {
+  border-radius: 0px;
+}
+#modal-region .modal .btn {
+  border-radius: 0px;
+}
+#modal-region .modal .btn:hover {
+  background-color: #27ae60;
+  border-color: #fff;
+  color: #fff;
 }

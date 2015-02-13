@@ -4,3 +4,5 @@
 </div>
 
 <div id="main-region"></div>
+
+<div id="modal-region"></div>

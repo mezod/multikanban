@@ -8,7 +8,7 @@ define([
 				require(["entities/kanban"], function(){
 					var kanbans = App.request("kanban:entities");
 
-					$.when(kanbans).done(function(){
+					
 						var kanbansListView = new View.Kanbans({
 							collection: kanbans
 						});
@@ -50,9 +50,25 @@ define([
 			            });
 
 			            kanbansListView.on("childview:kanban:delete", function(ChildView, args){
-			            	console.log("kanban:delete");
+			            	console.log("modal:kanban:delete");
+			            	var modal = new View.confirmDeleteView();
+			            	
+							modal.render();
+							 
+							var $modalEl = $("#modal-region");
 
-			            	args.model.destroy();
+							$modalEl.html(modal.el);
+							 
+							require(["bootstrap"], function(){
+								
+								$modalEl.modal(); 
+							});
+
+							modal.on("confirm:delete", function(){
+								args.model.destroy();
+							});
+
+			            	//args.model.destroy();
 		               		//si el kanban que es borra es en el que s'esta anar a home
 		               		
 			            });
@@ -68,8 +84,19 @@ define([
 		               		
 			            });
 
+			            kanbansListView.on("childview:kanban:editPosition", function(ChildView, model, position){
+			            	console.log("childview:kanban:editPosition");
+			            	var data = { 'position' : position };
+			            	console.log("args");
+			            	console.log(model);
+			            	
+			            	model.save(data);
+		               		//App.trigger("menu:show");
+		               		
+			            });
+
 						App.mainLayout.headerRegion.show(kanbansListView);
-					});
+					
 				});
 			}
 		}

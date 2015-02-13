@@ -10,9 +10,13 @@ require.config({
     text: 'vendor/requirejs-text/text',
     tpl: 'vendor/requirejs-underscore-tpl/underscore-tpl',
     jqueryui: 'vendor/jquery-ui/jquery-ui.min',
+    bootstrap: 'vendor/bootstrap/dist/js/bootstrap.min',
   },
   shim: {
   	jqueryui: {
+      deps : ["jquery"]
+    },
+    bootstrap: {
       deps : ["jquery"]
     },
     underscore: {
@@ -30,6 +34,6 @@ require.config({
   // deps: ['app']
 });
 
-require(['app',"apps/menu/menu_app","apps/footer/footer_app"], function(App) {
+require(['app'], function(App) {
   App.start();
 });
