@@ -21,10 +21,10 @@ define([
     });
 
     var API = {
-      showTasks: function(){
+      showTasks: function(id){
         require(["apps/kanban/show/show_controller"], function(ShowController){
           if(!App.mainLayout || App.mainLayout.isDestroyed) App.trigger("create:layout");
-          ShowController.showTasks();
+          ShowController.showTasks(id);
         });
       }
     };
@@ -34,8 +34,9 @@ define([
       //App.navigate("kanban");
       App.navigate(href);
 
-
-      API.showTasks();
+      var fragment = href.split("/");
+      console.log(fragment[1]);
+      API.showTasks(fragment[1]);
     });
 
     KanbanApp.addInitializer(function(){

@@ -12,58 +12,45 @@ define([
     Entities.TaskCollection = Backbone.Collection.extend({
       model: Entities.Task,
 
-      initialize: function(){
+      initialize: function(options){
 
+        this.url = "/../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+options.kanban_id+"/tasks/"+options.state;
       }
     });
 
-    // Dummy Tasks
-    var initializeTasks = function(){
-      Entities.tasks = new Entities.TaskCollection([
-        {
-        "id": "13",
-        "user_id": "2",
-        "kanban_id": "7",
-        "text": "write the abstract",
-        "dateCreated": "2015-01-06",
-        "dateCompleted": "2015-01-06",
-        "position": "1",
-        "state": "to do"
-        },
-        {
-        "id": "15",
-        "user_id": "2",
-        "kanban_id": "7",
-        "text": "Write the summary",
-        "dateCreated": "2015-01-07",
-        "dateCompleted": null,
-        "position": "0",
-        "state": "backlog"
-        },
-        {
-        "id": "16",
-        "user_id": "2",
-        "kanban_id": "7",
-        "text": "Write the summary",
-        "dateCreated": "2015-01-07",
-        "dateCompleted": null,
-        "position": "0",
-        "state": "backlog"
-        }
-      ]);
-    };
-
     var API = {
-      getTasks: function(){
-        if(Entities.tasks === undefined){
-          initializeTasks();
-        }
+      getTasks: function(state, kanban_id){
+        Entities.tasks = new Entities.TaskCollection({'state' : state, 'kanban_id': kanban_id});
+        Entities.tasks.fetch({
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization','token '+App.loggedInUser.token);
+          },
+          success: function(data){
+            //console.log(data);
+          }
+        });
+
         return Entities.tasks;
       }
     };
 
-    App.reqres.setHandler("task:entities", function(){
-      return API.getTasks();
+    App.reqres.setHandler("backlog:task:entities", function(kanban_id){
+      return API.getTasks("backlog", kanban_id);
+    });
+    App.reqres.setHandler("todo:task:entities", function(kanban_id){
+      return API.getTasks("to do", kanban_id);
+    });
+    App.reqres.setHandler("doing:task:entities", function(kanban_id){
+      return API.getTasks("doing", kanban_id);
+    });
+    App.reqres.setHandler("onhold:task:entities", function(kanban_id){
+      return API.getTasks("on hold", kanban_id);
+    });
+    App.reqres.setHandler("done:task:entities", function(kanban_id){
+      return API.getTasks("done", kanban_id);
+    });
+    App.reqres.setHandler("archive:task:entities", function(kanban_id){
+      return API.getTasks("archive", kanban_id);
     });
   });
 

@@ -5,6 +5,12 @@ define([
     
     Entities.Kanban = Backbone.Model.extend({
 
+      defaults: {
+            title: "potatokanban",
+            lastEdited: "yesterday"
+
+        },
+
       initialize: function(){
 
       },
@@ -74,19 +80,19 @@ define([
         return Entities.kanbans;
       },
 
-      // getKanban: function(kanbanId){
-      //   Entities.kanban = new Entities.Kanban({id: kanbanId});
-      //   Entities.kanban.fetch({
-      //     beforeSend: function(xhr) {
-      //       xhr.setRequestHeader('Authorization','token '+App.loggedInUser.token);
-      //     },
-      //     success: function(data){
-      //       console.log(data);
-      //     }
-      //   });
+      getKanban: function(kanban_id){
+        Entities.kanban = new Entities.Kanban({id: kanban_id});
+        Entities.kanban.fetch({
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization','token '+App.loggedInUser.token);
+          },
+          success: function(data){
+            App.trigger("fetched:kanban");
+          }
+        });
 
-      //   return Entities.kanban;
-      // }
+        return Entities.kanban;
+      }
 
 
     };

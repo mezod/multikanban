@@ -6684,7 +6684,9 @@ body a:focus {
   outline: none;
 }
 html,
-body {
+body,
+#content,
+#layout {
   height: 100%;
 }
 #menu-region {

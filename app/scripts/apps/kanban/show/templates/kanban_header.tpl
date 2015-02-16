@@ -1,5 +1,5 @@
 <header>
-	<h1>Kaban header</h1>
+	<h1><%= title %></h1>
 </header>
 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-<a class="lastEdited">Last edited: yesterday</a>
+<a class="lastEdited">Last edited: <%= lastEdited %></a>

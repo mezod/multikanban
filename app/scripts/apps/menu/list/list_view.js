@@ -25,7 +25,6 @@ define([
 			
 		    drop: function(event, index) {
 		    	console.log("drop");
-		    	console.log(index);
 		        this.trigger('kanban:editPosition', this.model, index);
 		    }, 
 
@@ -37,11 +36,13 @@ define([
 				// make a tag editable
 				var a = $(e.currentTarget.parentNode.parentNode);
 				a.attr("contentEditable", true);
+				a.focus();
 				this.setEndOfContenteditable(e.currentTarget.parentNode.parentNode);
+
 				
 				// change styles
 				a.addClass('light');
-				console.log(a.find('.editKanban'));
+
 				a.find('.editKanban')
 					.removeClass('glyphicon-pencil editKanban')
 					.addClass('glyphicon-floppy-disk submitEditKanban');
@@ -163,8 +164,7 @@ define([
 		    	$('aside li a').removeClass('selected'); 
 				$('aside li').each(function(){
 					console.log("weee");
-					console.log(this);
-					console.log(e.currentTarget.parentNode);
+
 					if(this === e.currentTarget.parentNode){
 						console.log("wee");
 				    	$(this).find('a').addClass('selected'); 
@@ -232,12 +232,22 @@ define([
 				require(["jqueryui"], function(){
 					$('#kanbanList').sortable({
 						items: ".kanbanItem",
-						cancel: ".newKanban",
+						cancel: ".newKanban,[contenteditable]",
 				        stop: function(event, ui) {
 				            ui.item.trigger('drop', ui.item.index());
 				        }
 			   		});
 			   	});
+
+			   	//initialize selected kanban
+	            $('aside li').each(function(){
+					var href = $(this).find('a').attr('href');
+
+					if(href === Backbone.history.fragment){
+						console.log("wee");
+				    	$(this).find('a').addClass('selected'); 
+				  	}
+				});
 
 			}
 
