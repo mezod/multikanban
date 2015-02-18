@@ -5,11 +5,11 @@ define([
     
     Entities.Kanban = Backbone.Model.extend({
 
-      defaults: {
-            title: "potatokanban",
-            lastEdited: "yesterday"
+      // defaults: {
+      //       title: "potatokanban",
+      //       lastEdited: "yesterday"
 
-        },
+      //   },
 
       initialize: function(){
 
@@ -24,8 +24,6 @@ define([
 
       sync: function(method, model, options) {
         options || (options = {});
-
-        console.log(model);
 
         options.headers = { 'Authorization' : 'token '+App.loggedInUser.token };
 
@@ -73,7 +71,7 @@ define([
             xhr.setRequestHeader('Authorization','token '+App.loggedInUser.token);
           },
           success: function(data){
-            console.log(data);
+            //console.log(data);
           }
         });
 
@@ -106,7 +104,10 @@ define([
     });
 
     App.reqres.setHandler("kanban:entity:new", function(){
-      return new Entities.Kanban();
+      var we = new Entities.Kanban();
+      console.log("THIS IS THE NEW KANBAN     -->   ");
+      console.log(we);
+      return we;
     });
   });
 

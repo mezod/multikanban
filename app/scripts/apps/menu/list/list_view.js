@@ -123,6 +123,16 @@ define([
 			        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
 			        range.select();//Select the range (make it the visible selection
 			    }
+			},
+
+			onRender: function(){
+				//initializing selected kanban
+				var href = this.$el.find('a').attr('href');
+				
+				if(href === Backbone.history.fragment){
+					console.log("wee");
+			    	this.$el.find('a').addClass('selected'); 
+			  	}
 			}
 
 		});
@@ -163,10 +173,9 @@ define([
 		    	
 		    	$('aside li a').removeClass('selected'); 
 				$('aside li').each(function(){
-					console.log("weee");
 
 					if(this === e.currentTarget.parentNode){
-						console.log("wee");
+
 				    	$(this).find('a').addClass('selected'); 
 				  	}
 				})
@@ -238,17 +247,7 @@ define([
 				        }
 			   		});
 			   	});
-
-			   	//initialize selected kanban
-	            $('aside li').each(function(){
-					var href = $(this).find('a').attr('href');
-
-					if(href === Backbone.history.fragment){
-						console.log("wee");
-				    	$(this).find('a').addClass('selected'); 
-				  	}
-				});
-
+			   	
 			}
 
 		});

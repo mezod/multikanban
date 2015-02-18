@@ -30,12 +30,10 @@ define([
     };
 
     App.on("kanban:show", function(href){
-      console.log(href);
-      //App.navigate("kanban");
       App.navigate(href);
 
       var fragment = href.split("/");
-      console.log(fragment[1]);
+
       API.showTasks(fragment[1]);
     });
 

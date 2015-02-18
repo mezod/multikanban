@@ -61,6 +61,7 @@ define([
 					});
 
 					kanbanLayout.on("show", function(){
+						console.log("kanbanLayout " + kanbanLayout.cid);
 						kanbanLayout.kanbanHeader.show(kanbanHeader);
 						kanbanLayout.backlog.show(backlog);
 						kanbanLayout.todo.show(todo);
