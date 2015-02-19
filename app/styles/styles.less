@@ -234,15 +234,8 @@ html, body, #content, #layout{
     		font-size: 31px;
 		    margin: 0;
 		    padding: 23px 0 23px 30px;
-    	}
-
-    	span{
-
-    	}
-
-    	a{
-
-    	}
+            outline: none;
+    	}   	
     }
 
     .activity-item{
@@ -284,9 +277,20 @@ html, body, #content, #layout{
 	    		color: @green;
 	    		cursor: pointer;
 	    	}
+
+            span{
+
+                &.saveTitle, &.cancelTitle{
+                    display: none;
+                }
+            }
+
+            a{
+
+            }
 	    }
 
-	    &:hover span{
+	    &:hover .editTitle{
 	    	display: inline-block;
 	    }
 

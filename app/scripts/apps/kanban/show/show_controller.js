@@ -8,13 +8,22 @@ define([
 				require(["entities/task", "entities/kanban"], function(){
 					//layout
 					var kanbanLayout = new View.Layout();
-					console.log("kanbanLayout " + kanbanLayout.cid);
 
 					//kanban
 					var kanban = App.request("kanban:entity", kanban_id);
 
 					//header
 					var kanbanHeader = new View.KanbanHeader({model: kanban});
+
+						kanbanHeader.on("title:kanban:edit", function(model, title){
+			            	console.log("title:kanban:edit");
+			            	var data = { 'title' : title };
+			            	console.log("args");
+			            	console.log(model);
+			            	
+			            	model.save(data);
+		               		App.trigger("menu:show");
+			            });
 
 					//tasks
 					var backlogTasks = App.request("backlog:task:entities", kanban_id);
@@ -23,6 +32,8 @@ define([
 					var onholdTasks = App.request("onhold:task:entities", kanban_id);
 					var doneTasks = App.request("done:task:entities", kanban_id);
 					var archiveTasks = App.request("archive:task:entities", kanban_id);
+
+					console.log(backlogTasks);
 
 					var backlog = new View.Column({
 						collection: backlogTasks,
@@ -60,8 +71,7 @@ define([
 						sortType: "date"
 					});
 
-					kanbanLayout.on("show", function(){
-						console.log("kanbanLayout " + kanbanLayout.cid);
+					kanbanLayout.once("show", function(){
 						kanbanLayout.kanbanHeader.show(kanbanHeader);
 						kanbanLayout.backlog.show(backlog);
 						kanbanLayout.todo.show(todo);
@@ -71,7 +81,7 @@ define([
 						kanbanLayout.archive.show(archive);
 					});
 
-					App.on("fetched:kanban", function(){
+					App.once("fetched:kanban", function(){
 						App.mainLayout.mainRegion.show(kanbanLayout);
 					});
 

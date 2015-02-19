@@ -104,10 +104,7 @@ define([
     });
 
     App.reqres.setHandler("kanban:entity:new", function(){
-      var we = new Entities.Kanban();
-      console.log("THIS IS THE NEW KANBAN     -->   ");
-      console.log(we);
-      return we;
+      return new Entities.Kanban();
     });
   });
 

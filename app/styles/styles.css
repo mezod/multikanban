@@ -6861,6 +6861,7 @@ body,
   font-size: 31px;
   margin: 0;
   padding: 23px 0 23px 30px;
+  outline: none;
 }
 #main-region .activity-item {
   padding: 15px;
@@ -6894,7 +6895,11 @@ body,
   color: #27ae60;
   cursor: pointer;
 }
-#main-region #kanban-header:hover span {
+#main-region #kanban-header span span.saveTitle,
+#main-region #kanban-header span span.cancelTitle {
+  display: none;
+}
+#main-region #kanban-header:hover .editTitle {
   display: inline-block;
 }
 #main-region #kanban-header a {
