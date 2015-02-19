@@ -130,16 +130,17 @@ define([
 			childViewContainer: 'ul',
 
 			initialize: function(options){
-
+				this.listenTo(this.collection, "sync", this.render);
 				this.columnName = options.columnName;
 				this.sortType = options.sortType;
 			},
 
 			serializeData: function(){
 
+				console.log(this.collection.length);
 				return {
 					columnName: this.columnName,
-					sortType: this.sortType
+					sortType: this.sortType,
 				}
 			}
 

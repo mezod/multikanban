@@ -16,10 +16,7 @@ define([
 					var kanbanHeader = new View.KanbanHeader({model: kanban});
 
 						kanbanHeader.on("title:kanban:edit", function(model, title){
-			            	console.log("title:kanban:edit");
 			            	var data = { 'title' : title };
-			            	console.log("args");
-			            	console.log(model);
 			            	
 			            	model.save(data);
 		               		App.trigger("menu:show");
@@ -33,59 +30,57 @@ define([
 					var doneTasks = App.request("done:task:entities", kanban_id);
 					var archiveTasks = App.request("archive:task:entities", kanban_id);
 
-					console.log(backlogTasks);
+					$.when(backlogTasks, todoTasks, doingTasks, onholdTasks, doneTasks, archiveTasks).done(function(){
+						var backlog = new View.Column({
+							collection: backlogTasks,
+							columnName: "Backlog",
+							sortType: "list"
+						});
 
-					var backlog = new View.Column({
-						collection: backlogTasks,
-						columnName: "Backlog",
-						sortType: "list"
+						var todo = new View.Column({
+							collection: todoTasks,
+							columnName: "To do",
+							sortType: "list"
+						});
+
+						var doing = new View.Column({
+							collection: doingTasks,
+							columnName: "Doing",
+							sortType: "list"
+						});
+
+						var onhold = new View.Column({
+							collection: onholdTasks,
+							columnName: "On hold",
+							sortType: "list"
+						});
+
+						var done = new View.Column({
+							collection: doneTasks,
+							columnName: "Done",
+							sortType: "date"
+						});
+
+						var archive = new View.Column({
+							collection: archiveTasks,
+							columnName: "Archive",
+							sortType: "date"
+						});
+
+						kanbanLayout.on("show", function(){
+							kanbanLayout.kanbanHeader.show(kanbanHeader);
+							kanbanLayout.backlog.show(backlog);
+							kanbanLayout.todo.show(todo);
+							kanbanLayout.doing.show(doing);
+							kanbanLayout.onhold.show(onhold);
+							kanbanLayout.done.show(done);
+							kanbanLayout.archive.show(archive);
+						});
+
+						App.once("fetched:kanban", function(){
+							App.mainLayout.mainRegion.show(kanbanLayout);
+						});
 					});
-
-					var todo = new View.Column({
-						collection: todoTasks,
-						columnName: "To do",
-						sortType: "list"
-					});
-
-					var doing = new View.Column({
-						collection: doingTasks,
-						columnName: "Doing",
-						sortType: "list"
-					});
-
-					var onhold = new View.Column({
-						collection: onholdTasks,
-						columnName: "On hold",
-						sortType: "list"
-					});
-
-					var done = new View.Column({
-						collection: doneTasks,
-						columnName: "Done",
-						sortType: "date"
-					});
-
-					var archive = new View.Column({
-						collection: archiveTasks,
-						columnName: "Archive",
-						sortType: "date"
-					});
-
-					kanbanLayout.once("show", function(){
-						kanbanLayout.kanbanHeader.show(kanbanHeader);
-						kanbanLayout.backlog.show(backlog);
-						kanbanLayout.todo.show(todo);
-						kanbanLayout.doing.show(doing);
-						kanbanLayout.onhold.show(onhold);
-						kanbanLayout.done.show(done);
-						kanbanLayout.archive.show(archive);
-					});
-
-					App.once("fetched:kanban", function(){
-						App.mainLayout.mainRegion.show(kanbanLayout);
-					});
-
-					
 					
 				});
 			}

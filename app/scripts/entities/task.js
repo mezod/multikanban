@@ -12,7 +12,7 @@ define([
     Entities.TaskCollection = Backbone.Collection.extend({
       model: Entities.Task,
 
-      initialize: function(options){
+      initialize: function(collection, options){
 
         this.url = "/../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+options.kanban_id+"/tasks/"+options.state;
       }
@@ -20,7 +20,7 @@ define([
 
     var API = {
       getTasks: function(state, kanban_id){
-        Entities.tasks = new Entities.TaskCollection({'state' : state, 'kanban_id': kanban_id});
+        Entities.tasks = new Entities.TaskCollection([], {'state' : state, 'kanban_id': kanban_id});
         Entities.tasks.fetch({
           beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization','token '+App.loggedInUser.token);
