@@ -41,8 +41,12 @@ html, body, #content, #layout{
 		}
     }
     
+    #header{
+        height: 100%;
+    }
 
     aside{
+        height: 100%;
 
     	.glyphicon{
     		font-size: 22px;
@@ -82,6 +86,11 @@ html, body, #content, #layout{
     		padding: 10px 20px 0px 0px;
 
     	}
+
+        ul{
+            height: calc(100% - 130px);
+            overflow-y: auto;
+        }
 
 		ul li a{
 			font-size: 16px;
@@ -319,7 +328,7 @@ html, body, #content, #layout{
 
     		.column-header{
     			font-size: 20px;
-    			padding: 6px 0;
+    			padding: 6px 0 5px;
     			line-height: 28px;
     			position: relative;
     			width: 100%;
@@ -353,6 +362,42 @@ html, body, #content, #layout{
 
     		ul{
     			list-style: none;
+
+                .inputTask{
+                    height: 80px;
+                    background: none repeat scroll 0 0 @green;
+                    position: relative;
+                    font-size: 32px;
+                    color: white;
+                    display: none;
+
+                    &.light{
+                        background: none repeat scroll 0 0 @lightgreen;   
+                    }
+
+                    input{
+                        background: none repeat scroll 0 0 @green;
+                        border: none;
+                        height: 79px;
+                        width: 87%;
+                        
+                        padding: 9px 10px 9px 20px;
+                        float: left;
+
+                        &.light{
+                            background: none repeat scroll 0 0 @lightgreen;   
+                        }
+                        
+                    }
+
+                    .glyphicon{
+                        margin-top: 22px;
+
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+                }
 
     			li{
 	    			height: 80px;
@@ -400,7 +445,7 @@ html, body, #content, #layout{
 	    				}
 	    			}
 
-	    			&:hover{
+	    			&:hover, &.editing{
 	    				background-color: @lightgrey;
 	    				cursor: move;
 

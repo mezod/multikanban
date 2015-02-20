@@ -130,7 +130,7 @@ define([
 				var href = this.$el.find('a').attr('href');
 				
 				if(href === Backbone.history.fragment){
-					console.log("wee");
+
 			    	this.$el.find('a').addClass('selected'); 
 			  	}
 			}
@@ -235,7 +235,6 @@ define([
 				$('.inputKanban .glyphicon').hover(function(){
 				    $(this).parent().toggleClass('light');
 				    $('.inputKanban input').toggleClass('light');
-
 				});
 
 				require(["jqueryui"], function(){

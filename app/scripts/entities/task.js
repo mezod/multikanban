@@ -4,13 +4,40 @@ define([
   App.module("Entities", function(Entities, App, Backbone, Marionette, $, _){
     
     Entities.Task = Backbone.Model.extend({
-      initialize: function(){
 
+      initialize: function(options){
+
+        this.kanban_id = options.kanban_id;
+      },
+
+      sync: function(method, model, options) {
+        options || (options = {});
+
+        options.headers = { 'Authorization' : 'token '+App.loggedInUser.token };
+
+        switch (method) {
+            case "create":
+                options.url = "/../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks";
+                break;
+            case "read":
+                options.url = "/../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks/"+model.get("id");
+                break;
+            case "delete":
+                options.url = "/../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks/"+model.get("id");
+                break;
+            case "update":
+                options.url = "/../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks/"+model.get("id");
+                break;
+        }
+
+        if (options.url)
+            return Backbone.sync.call(model, method, model, options);
       }
     });
 
     Entities.TaskCollection = Backbone.Collection.extend({
       model: Entities.Task,
+      comparator: "position",
 
       initialize: function(collection, options){
 
@@ -51,6 +78,10 @@ define([
     });
     App.reqres.setHandler("archive:task:entities", function(kanban_id){
       return API.getTasks("archive", kanban_id);
+    });
+
+    App.reqres.setHandler("task:entity:new", function(kanban_id){
+      return new Entities.Task({'kanban_id': kanban_id});
     });
   });
 

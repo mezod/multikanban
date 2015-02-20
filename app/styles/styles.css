@@ -6708,6 +6708,12 @@ body,
   text-decoration: none;
   outline: none;
 }
+#menu-region #header {
+  height: 100%;
+}
+#menu-region aside {
+  height: 100%;
+}
 #menu-region aside .glyphicon {
   font-size: 22px;
 }
@@ -6737,6 +6743,10 @@ body,
 }
 #menu-region aside .logout {
   padding: 10px 20px 0px 0px;
+}
+#menu-region aside ul {
+  height: calc(100% - 130px);
+  overflow-y: auto;
 }
 #menu-region aside ul li a {
   font-size: 16px;
@@ -6923,7 +6933,7 @@ body,
 }
 #main-region #kanban-board .column .column-header {
   font-size: 20px;
-  padding: 6px 0;
+  padding: 6px 0 5px;
   line-height: 28px;
   position: relative;
   width: 100%;
@@ -6951,6 +6961,34 @@ body,
 }
 #main-region #kanban-board .column ul {
   list-style: none;
+}
+#main-region #kanban-board .column ul .inputTask {
+  height: 80px;
+  background: none repeat scroll 0 0 #27ae60;
+  position: relative;
+  font-size: 32px;
+  color: white;
+  display: none;
+}
+#main-region #kanban-board .column ul .inputTask.light {
+  background: none repeat scroll 0 0 #2bc36b;
+}
+#main-region #kanban-board .column ul .inputTask input {
+  background: none repeat scroll 0 0 #27ae60;
+  border: none;
+  height: 79px;
+  width: 87%;
+  padding: 9px 10px 9px 20px;
+  float: left;
+}
+#main-region #kanban-board .column ul .inputTask input.light {
+  background: none repeat scroll 0 0 #2bc36b;
+}
+#main-region #kanban-board .column ul .inputTask .glyphicon {
+  margin-top: 22px;
+}
+#main-region #kanban-board .column ul .inputTask .glyphicon:hover {
+  cursor: pointer;
 }
 #main-region #kanban-board .column ul li {
   height: 80px;
@@ -6987,11 +7025,13 @@ body,
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-#main-region #kanban-board .column ul .task:hover {
+#main-region #kanban-board .column ul .task:hover,
+#main-region #kanban-board .column ul .task.editing {
   background-color: #eeeeee;
   cursor: move;
 }
-#main-region #kanban-board .column ul .task:hover span {
+#main-region #kanban-board .column ul .task:hover span,
+#main-region #kanban-board .column ul .task.editing span {
   display: inline-block;
 }
 #main-region #kanban-board .column ul .task span {

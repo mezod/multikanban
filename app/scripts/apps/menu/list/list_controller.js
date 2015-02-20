@@ -38,10 +38,6 @@ define([
 		                	console.log("kanban:submit");
 		                	var data = { 'title' : title };
 
-		                	console.log(data);
-
-		                	console.log("AFTER SUBMIT --> ");
-		                    console.log(newKanban);
 		               		newKanban.save(data).then(function(){
 		               			console.log(newKanban);
 		               			kanbans.add(newKanban);

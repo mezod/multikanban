@@ -37,11 +37,42 @@ define([
 							sortType: "list"
 						});
 
+							backlog.on("task:new", function(){
+								console.log("task:new");
+				                var newTask = App.request("task:entity:new", kanban_id);
+				                
+				                backlog.once("task:submit", function(text){
+				                	console.log("task:submit");
+				                	var data = { 'text' : text };
+
+				               		newTask.save(data).then(function(){
+				               			backlogTasks.each(function(elem){
+				               				console.log(elem);
+				               				console.log(elem.attributes.position);
+				               				elem.attributes.position++;
+				               			});
+				               			backlogTasks.add(newTask);
+				               		});
+				                });
+				            });
+
+				            backlog.on("childview:task:save", function(ChildView, model, text){
+				            	Show.Controller.saveTask(ChildView, model, text);
+				            });
+
+				            backlog.on("childview:task:delete", function(ChildView, args){
+				            	Show.Controller.deleteTask(ChildView, args);
+				            });
+
 						var todo = new View.Column({
 							collection: todoTasks,
 							columnName: "To do",
 							sortType: "list"
 						});
+
+							todo.on("childview:task:save", function(ChildView, model, text){
+				            	Show.Controller.saveTask(ChildView, model, text);
+				            });
 
 						var doing = new View.Column({
 							collection: doingTasks,
@@ -49,11 +80,19 @@ define([
 							sortType: "list"
 						});
 
+							doing.on("childview:task:save", function(ChildView, model, text){
+				            	Show.Controller.saveTask(ChildView, model, text);
+				            });
+
 						var onhold = new View.Column({
 							collection: onholdTasks,
 							columnName: "On hold",
 							sortType: "list"
 						});
+
+							onhold.on("childview:task:save", function(ChildView, model, text){
+				            	Show.Controller.saveTask(ChildView, model, text);
+				            });
 
 						var done = new View.Column({
 							collection: doneTasks,
@@ -61,11 +100,19 @@ define([
 							sortType: "date"
 						});
 
+							done.on("childview:task:save", function(ChildView, model, text){
+				            	Show.Controller.saveTask(ChildView, model, text);
+				            });
+
 						var archive = new View.Column({
 							collection: archiveTasks,
 							columnName: "Archive",
 							sortType: "date"
 						});
+
+							archive.on("childview:task:save", function(ChildView, model, text){
+				            	Show.Controller.saveTask(ChildView, model, text);
+				            });
 
 						kanbanLayout.on("show", function(){
 							kanbanLayout.kanbanHeader.show(kanbanHeader);
@@ -83,7 +130,34 @@ define([
 					});
 					
 				});
-			}
+			},
+
+			saveTask: function(ChildView, model, text){
+            	console.log("task:save");
+            	var data = { 'text' : text };
+            	
+            	model.save(data);
+            },
+
+            deleteTask: function(ChildView, args){
+            	console.log("modal:task:delete");
+            	var modal = new View.confirmDeleteView();
+            	
+				modal.render();
+				 
+				var $modalEl = $("#modal-region");
+
+				$modalEl.html(modal.el);
+				 
+				require(["bootstrap"], function(){
+					
+					$modalEl.modal(); 
+				});
+
+				modal.on("confirm:delete", function(){
+					args.model.destroy();
+				});		            
+            }
 		}
 	});
 
