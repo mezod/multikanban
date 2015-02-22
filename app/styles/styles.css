@@ -6928,6 +6928,9 @@ body,
   height: 100%;
   vertical-align: top;
 }
+#main-region #kanban-board .column > div {
+  height: 100%;
+}
 #main-region #kanban-board .column a {
   color: #333;
 }
@@ -6961,6 +6964,7 @@ body,
 }
 #main-region #kanban-board .column ul {
   list-style: none;
+  height: 100%;
 }
 #main-region #kanban-board .column ul .inputTask {
   height: 80px;

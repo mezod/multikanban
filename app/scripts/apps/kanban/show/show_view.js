@@ -298,6 +298,17 @@ define([
 				    $(this).parent().toggleClass('light');
 				    $('.inputTask input').toggleClass('light');
 				});
+
+				require(["jqueryui"], function(){
+					$('.column-list').sortable({
+						connectWith: '.column-list',
+						items: ".task",
+						cancel: ".newTask,[contenteditable]",
+				        stop: function(event, ui) {
+				            ui.item.trigger('drop', ui.item.index());
+				        }
+			   		});
+			   	});
 			}
 
 		});
