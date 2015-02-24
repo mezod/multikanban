@@ -131,7 +131,8 @@ define([
 			events: {
 				"click .editTask": "editTask",
 				"click .saveTask": "saveTask",
-				"click .cancelTask": "cancelTask"
+				"click .cancelTask": "cancelTask",
+				"drop": "drop"
 			},
 
 			editTask: function(e){
@@ -229,6 +230,15 @@ define([
 			        range.select();//Select the range (make it the visible selection
 			    }
 			},
+
+			drop: function(event, index, sender, placeholder){
+		    	console.log("drop");
+		    	console.log(index);
+		    	console.log(sender);
+		    	console.log(placeholder);
+		    	this.trigger('task:change', this.model, index, sender, placeholder);
+
+		    }
 		});
 
 		View.Column = Marionette.CompositeView.extend({
@@ -244,6 +254,7 @@ define([
 			initialize: function(options){
 				this.listenTo(this.collection, "sync", this.render);
 				this.columnName = options.columnName;
+				this.columnId = options.columnId;
 				this.sortType = options.sortType;
 			},
 
@@ -251,6 +262,7 @@ define([
 
 				return {
 					columnName: this.columnName,
+					columnId: this.columnId,
 					sortType: this.sortType,
 					numElems: this.collection.length
 				}
@@ -291,7 +303,7 @@ define([
 
 		    },
 
-			onRender : function(){
+			onRender: function(){
 
 				// highlighting whole row when hovering submit
 				$('.inputTask .glyphicon').hover(function(){
@@ -304,8 +316,9 @@ define([
 						connectWith: '.column-list',
 						items: ".task",
 						cancel: ".newTask,[contenteditable]",
-				        stop: function(event, ui) {
-				            ui.item.trigger('drop', ui.item.index());
+				        receive: function(event, ui) {
+				        	console.log($(this).attr('id'));
+				            ui.item.trigger('drop', [ui.item.index(), ui.sender, $(this)]);
 				        }
 			   		});
 			   	});

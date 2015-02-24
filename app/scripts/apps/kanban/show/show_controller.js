@@ -3,6 +3,8 @@ define([
 	'apps/kanban/show/show_view'
 ], function(App, View){
 	App.module("KanbanApp.Show", function(Show, App, Backbone, Marionette, $, _){
+		
+
 		Show.Controller = {
 			showTasks: function(kanban_id){
 				require(["entities/task", "entities/kanban"], function(){
@@ -34,6 +36,7 @@ define([
 						var backlog = new View.Column({
 							collection: backlogTasks,
 							columnName: "Backlog",
+							columnId: "backlog",
 							sortType: "list"
 						});
 
@@ -64,9 +67,15 @@ define([
 				            	Show.Controller.deleteTask(ChildView, args);
 				            });
 
+				            backlog.on("childview:task:change", function(ChildView, model, index, from, to){
+				            	console.log("backlog:change:task");
+				            	Show.Controller.changeTask(ChildView, model, index, from, to);
+				            });
+
 						var todo = new View.Column({
 							collection: todoTasks,
 							columnName: "To do",
+							columnId: "todo",
 							sortType: "list"
 						});
 
@@ -74,9 +83,15 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
+				            todo.on("childview:task:change", function(ChildView, model, index){
+				            	console.log("todo:change:task");
+				            	Show.Controller.changeTask(ChildView, model, index);
+				            });
+
 						var doing = new View.Column({
 							collection: doingTasks,
 							columnName: "Doing",
+							columnId: "doing",
 							sortType: "list"
 						});
 
@@ -84,9 +99,15 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
+				            doing.on("childview:task:change", function(ChildView, model, index){
+				            	console.log("doing:change:task");
+				            	Show.Controller.changeTask(ChildView, model, index);
+				            });
+
 						var onhold = new View.Column({
 							collection: onholdTasks,
 							columnName: "On hold",
+							columnId: "onhold",
 							sortType: "list"
 						});
 
@@ -94,9 +115,15 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
+				            onhold.on("childview:task:change", function(ChildView, model, index){
+				            	console.log("onhold:change:task");
+				            	Show.Controller.changeTask(ChildView, model, index);
+				            });
+
 						var done = new View.Column({
 							collection: doneTasks,
 							columnName: "Done",
+							columnId: "done",
 							sortType: "date"
 						});
 
@@ -104,14 +131,25 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
+				            done.on("childview:task:change", function(ChildView, model, index){
+				            	console.log("done:change:task");
+				            	Show.Controller.changeTask(ChildView, model, index);
+				            });
+
 						var archive = new View.Column({
 							collection: archiveTasks,
 							columnName: "Archive",
+							columnId: "archive",
 							sortType: "date"
 						});
 
 							archive.on("childview:task:save", function(ChildView, model, text){
 				            	Show.Controller.saveTask(ChildView, model, text);
+				            });
+
+				            archive.on("childview:task:change", function(ChildView, model, index){
+				            	console.log("archive:change:task");
+				            	Show.Controller.changeTask(ChildView, model, index);
 				            });
 
 						kanbanLayout.on("show", function(){
@@ -157,6 +195,19 @@ define([
 				modal.on("confirm:delete", function(){
 					args.model.destroy();
 				});		            
+            },
+
+            changeTask: function(ChildView, model, index, from, to){
+            	console.log("change:task");
+
+            	console.log(model);
+            	console.log(index);
+            	console.log(from);
+            	console.log(to);
+
+				console.log(backlog);
+            	console.log(backlogTasks);
+
             }
 		}
 	});
