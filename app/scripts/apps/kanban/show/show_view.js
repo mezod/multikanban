@@ -312,16 +312,30 @@ define([
 				});
 
 				require(["jqueryui"], function(){
+					var oldList, newList, item;
 					$('.column-list').sortable({
 						connectWith: '.column-list',
 						items: ".task",
 						cancel: ".newTask,[contenteditable]",
-				        receive: function(event, ui) {
-				        	console.log($(this).attr('id'));
-				            ui.item.trigger('drop', [ui.item.index(), ui.sender, $(this)]);
+				        start: function(event, ui) {
+				        	console.log("start");
+				            item = ui.item;
+				            newList = oldList = ui.item.parent();
+				        },
+				        stop: function(event, ui) {  
+				        	console.log("stop");  
+				        	var index = ui.item.index();     
+				        	// index offset fix for backlog
+				            if(newList.attr('id') == 'backlog') index = index - 2;
+				        	ui.item.trigger('drop', [index, oldList.attr('id'), newList.attr('id')]);
+				        },
+				        change: function(event, ui) {  
+				            if(ui.sender) newList = ui.placeholder.parent();
 				        }
 			   		});
 			   	});
+
+			   	console.log(this.columnId);
 			}
 
 		});

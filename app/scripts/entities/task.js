@@ -65,13 +65,13 @@ define([
       return API.getTasks("backlog", kanban_id);
     });
     App.reqres.setHandler("todo:task:entities", function(kanban_id){
-      return API.getTasks("to do", kanban_id);
+      return API.getTasks("todo", kanban_id);
     });
     App.reqres.setHandler("doing:task:entities", function(kanban_id){
       return API.getTasks("doing", kanban_id);
     });
     App.reqres.setHandler("onhold:task:entities", function(kanban_id){
-      return API.getTasks("on hold", kanban_id);
+      return API.getTasks("onhold", kanban_id);
     });
     App.reqres.setHandler("done:task:entities", function(kanban_id){
       return API.getTasks("done", kanban_id);

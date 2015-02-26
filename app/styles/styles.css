@@ -7058,7 +7058,7 @@ body,
 #main-region #kanban-board #doing {
   display: inline-block;
   width: 100%;
-  height: 240px;
+  height: 239px;
 }
 #main-region #kanban-board #doing ul {
   overflow-y: scroll;
@@ -7067,7 +7067,7 @@ body,
 #main-region #kanban-board #onhold {
   display: inline-block;
   width: 100%;
-  height: calc(100% - 240px);
+  height: calc(100% - 200px);
 }
 #main-region #kanban-board #onhold .column-header {
   border-top: 1px solid #dddddd;

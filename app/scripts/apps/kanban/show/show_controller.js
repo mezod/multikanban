@@ -3,7 +3,12 @@ define([
 	'apps/kanban/show/show_view'
 ], function(App, View){
 	App.module("KanbanApp.Show", function(Show, App, Backbone, Marionette, $, _){
-		
+		var backlogTasks = null;
+		var todoTasks = null;
+		var doingTasks = null;
+		var onholdTasks = null;
+		var doneTasks = null;
+		var archiveTasks = null;
 
 		Show.Controller = {
 			showTasks: function(kanban_id){
@@ -25,12 +30,12 @@ define([
 			            });
 
 					//tasks
-					var backlogTasks = App.request("backlog:task:entities", kanban_id);
-					var todoTasks = App.request("todo:task:entities", kanban_id);
-					var doingTasks = App.request("doing:task:entities", kanban_id);
-					var onholdTasks = App.request("onhold:task:entities", kanban_id);
-					var doneTasks = App.request("done:task:entities", kanban_id);
-					var archiveTasks = App.request("archive:task:entities", kanban_id);
+					backlogTasks = App.request("backlog:task:entities", kanban_id);
+					todoTasks = App.request("todo:task:entities", kanban_id);
+					doingTasks = App.request("doing:task:entities", kanban_id);
+					onholdTasks = App.request("onhold:task:entities", kanban_id);
+					doneTasks = App.request("done:task:entities", kanban_id);
+					archiveTasks = App.request("archive:task:entities", kanban_id);
 
 					$.when(backlogTasks, todoTasks, doingTasks, onholdTasks, doneTasks, archiveTasks).done(function(){
 						var backlog = new View.Column({
@@ -83,9 +88,9 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
-				            todo.on("childview:task:change", function(ChildView, model, index){
+				            todo.on("childview:task:change", function(ChildView, model, index, from, to){
 				            	console.log("todo:change:task");
-				            	Show.Controller.changeTask(ChildView, model, index);
+				            	Show.Controller.changeTask(ChildView, model, index, from, to);
 				            });
 
 						var doing = new View.Column({
@@ -99,9 +104,9 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
-				            doing.on("childview:task:change", function(ChildView, model, index){
+				            doing.on("childview:task:change", function(ChildView, model, index, from, to){
 				            	console.log("doing:change:task");
-				            	Show.Controller.changeTask(ChildView, model, index);
+				            	Show.Controller.changeTask(ChildView, model, index, from, to);
 				            });
 
 						var onhold = new View.Column({
@@ -115,9 +120,9 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
-				            onhold.on("childview:task:change", function(ChildView, model, index){
+				            onhold.on("childview:task:change", function(ChildView, model, index, from, to){
 				            	console.log("onhold:change:task");
-				            	Show.Controller.changeTask(ChildView, model, index);
+				            	Show.Controller.changeTask(ChildView, model, index, from, to);
 				            });
 
 						var done = new View.Column({
@@ -131,9 +136,9 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
-				            done.on("childview:task:change", function(ChildView, model, index){
+				            done.on("childview:task:change", function(ChildView, model, index, from, to){
 				            	console.log("done:change:task");
-				            	Show.Controller.changeTask(ChildView, model, index);
+				            	Show.Controller.changeTask(ChildView, model, index, from, to);
 				            });
 
 						var archive = new View.Column({
@@ -147,9 +152,9 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
-				            archive.on("childview:task:change", function(ChildView, model, index){
+				            archive.on("childview:task:change", function(ChildView, model, index, from, to){
 				            	console.log("archive:change:task");
-				            	Show.Controller.changeTask(ChildView, model, index);
+				            	Show.Controller.changeTask(ChildView, model, index, from, to);
 				            });
 
 						kanbanLayout.on("show", function(){
@@ -200,15 +205,91 @@ define([
             changeTask: function(ChildView, model, index, from, to){
             	console.log("change:task");
 
-            	console.log(model);
-            	console.log(index);
-            	console.log(from);
-            	console.log(to);
+            	// backend
+            	var data = { 
+            		'state' : to,
+            		'position' : index
+            	 };
 
-				console.log(backlog);
-            	console.log(backlogTasks);
+            	oldIndex = model.attributes.position;
 
-            }
+            	model.save(data);
+
+
+            	//frontend
+            	//model right state and index (by default when PUT)
+
+            	//other tasks in to and from update index
+            	switch(from){
+            		case 'backlog':
+            			backlogTasks.remove(model);
+            			break;
+            		case 'todo':
+            			todoTasks.remove(model);
+            			break;
+            		case 'doing':
+            			doingTasks.remove(model);
+            			break;
+            		case 'onhold':
+            			onholdTasks.remove(model);
+            			break;
+            		case 'done':
+            			doneTasks.remove(model);
+            			break;
+            		case 'archive':
+            			archiveTasks.remove(model);
+            			break;
+            	}
+
+            	
+            	switch(to){
+            		case 'backlog':	
+            			this.updatePosition(backlogTasks, oldIndex, index);
+				        backlogTasks.add(model);
+            			break;
+            		case 'todo':
+            			this.updatePosition(todoTasks, oldIndex, index);
+            			todoTasks.add(model);
+            			break;
+            		case 'doing':
+            			this.updatePosition(doingTasks, oldIndex, index);
+            			doingTasks.add(model);
+            			break;
+            		case 'onhold':
+            			this.updatePosition(onholdTasks, oldIndex, index);
+            			onholdTasks.add(model);
+            			break;
+            		case 'done':
+            			this.updatePosition(doneTasks, oldIndex, index);
+            			doneTasks.add(model);
+            			break;
+            		case 'archive':
+            			this.updatePosition(archiveTasks, oldIndex, index);
+            			archiveTasks.add(model);
+            			break;
+            	}
+
+            	//update numElems
+            	if(from != to){
+            		var counter = $('#'+from).find('#counter').get([0]).textContent;
+            		counter = parseInt(counter)-1;
+            		$('#'+from).find('#counter').text(counter);
+            	}
+            },
+
+            updatePosition: function(collection, oldIndex, newIndex){
+            	collection.each(function (model, index) {
+		            console.log("initfrom"); 
+		            console.log(model.attributes.position); 
+		            var position = index;
+		            if (index >= newIndex) {
+		                position += 1;
+		            }
+		            model.set('position', position);
+		            console.log("endfrom"); 
+		            console.log(model.attributes.position); 
+		        });  
+        	}
 		}
 	});
 
