@@ -248,7 +248,12 @@ define([
 
 			events: {
 				"click .newTask": "newTask",
-				"click .submitTask": "submitTask"
+				"click .submitTask": "submitTask",
+				"click #customSort": "customSort",
+				"click #dateCreatedSort": "dateCreatedSort",
+				"click #dateCreatedSortInverse": "dateCreatedSortInverse",
+				"click #dateCompletedSort": "dateCompletedSort",
+				"click #dateCompletedSortInverse": "dateCompletedSortInverse"
 			},
 
 			initialize: function(options){
@@ -301,6 +306,15 @@ define([
 		    		}); 
 		    	}, 500 );
 
+		    },
+
+		    customSort: function(){
+		    	console.log("column:customsort");
+
+		    	console.log(this.options);
+		    	this.options.viewComparator = 'dateCreated';
+		    	this.collection.sort();
+		    	console.log(this.options.viewComparator);
 		    },
 
 			onRender: function(){

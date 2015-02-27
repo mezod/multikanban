@@ -6834,7 +6834,7 @@ body,
   padding: 0 20px;
   position: absolute;
   width: 100%;
-  z-index: -1;
+  z-index: 1000;
 }
 #footer ul {
   list-style: outside none none;
