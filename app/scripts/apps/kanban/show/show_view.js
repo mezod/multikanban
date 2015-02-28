@@ -13,12 +13,12 @@ define([
 
 			regions: {
 				kanbanHeader: "#kanban-header",
-				backlog: "#backlog",
-				todo: "#todo",
-				doing: "#doing",
-				onhold: "#onhold",
-				done: "#done",
-				archive: "#archive"
+				backlog: "#backlog-column",
+				todo: "#todo-column",
+				doing: "#doing-column",
+				onhold: "#onhold-column",
+				done: "#done-column",
+				archive: "#archive-column"
 			}
 		});
 
@@ -249,11 +249,11 @@ define([
 			events: {
 				"click .newTask": "newTask",
 				"click .submitTask": "submitTask",
-				"click #customSort": "customSort",
-				"click #dateCreatedSort": "dateCreatedSort",
-				"click #dateCreatedSortInverse": "dateCreatedSortInverse",
-				"click #dateCompletedSort": "dateCompletedSort",
-				"click #dateCompletedSortInverse": "dateCompletedSortInverse"
+				"click .customSort": "customSort",
+				"click .dateCreatedSort": "dateCreatedSort",
+				"click .dateCreatedSortInverse": "dateCreatedSortInverse",
+				"click .dateCompletedSort": "dateCompletedSort",
+				"click .dateCompletedSortInverse": "dateCompletedSortInverse"
 			},
 
 			initialize: function(options){
@@ -308,13 +308,57 @@ define([
 
 		    },
 
-		    customSort: function(){
+		    customSort: function(e){
 		    	console.log("column:customsort");
+		    	this.options.viewComparator = 'position';
+		    	this.collection.sort();
+		    	this.activateStyles(e,'.customSort');
+		    },
 
-		    	console.log(this.options);
+		    dateCreatedSort: function(e){
+		    	console.log("column:datecreatedsort");
 		    	this.options.viewComparator = 'dateCreated';
 		    	this.collection.sort();
-		    	console.log(this.options.viewComparator);
+		    	this.activateStyles(e,'.dateCreatedSort');
+		    	$(e.currentTarget).addClass("dateCreatedSortInverse").removeClass("dateCreatedSort");
+		    },
+
+		    dateCreatedSortInverse: function(e){
+		    	console.log("column:datecreatedsortinverse");
+		    	this.options.viewComparator = 'dateCreated';
+		    	this.collection.sort();
+		    	this.activateStyles(e,'.dateCreatedSort');
+		    	$(e.currentTarget).addClass("dateCreatedSort").removeClass("dateCreatedSortInverse");
+		    },
+
+		    dateCompletedSort: function(e){
+		    	console.log("column:datecompletedsort");
+		    	this.options.viewComparator = 'dateCompleted';
+		    	this.collection.sort();
+		    	this.activateStyles(e,'.dateCompletedSort');
+		    },
+
+		    dateCompletedSortInverse: function(e){
+		    	console.log("column:datecompletedsortinverse");
+		    	this.options.viewComparator = 'dateCompleted';
+		    	this.collection.sort();
+		    	this.activateStyles(e,'.dateCompletedSort');
+		    },
+
+		    activateStyles: function(e, id){
+		    	//console.log(e.currentTarget.parentNode);
+		    	//console.log(e.currentTarget.parentNode.parentNode);
+		    	
+				console.log('wololo');
+		    	console.log($(e.currentTarget));
+		    	console.log($(e.currentTarget).siblings("span"));
+
+		    	$(e.currentTarget).siblings("span").removeClass("selected");
+				$(e.currentTarget).addClass("selected");
+
+		    	// var column = e.currentTarget.parentNode.parentNode.parentNode.id;
+		    	// $('#'+column+' span').removeClass("active");
+		    	// $('#'+column+' span'+id).addClass("active");
 		    },
 
 			onRender: function(){

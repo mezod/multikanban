@@ -1,9 +1,9 @@
 <div id="kanban-header"></div>
 <div id="kanban-board">
-	<div id="backlog" class="column"></div>
-	<div id="todo" class="column"></div>
-	<div id="doing" class="column"></div>
-	<div id="onhold" class="column"></div>
-	<div id="done" class="column"></div>
-	<div id="archive" class="column"></div>
+	<div id="backlog-column" class="column"></div>
+	<div id="todo-column" class="column"></div>
+	<div id="doing-column" class="column"></div>
+	<div id="onhold-column" class="column"></div>
+	<div id="done-column" class="column"></div>
+	<div id="archive-column" class="column"></div>
 </div>

@@ -241,7 +241,7 @@ html, body, #content, #layout{
 
     	h1{
     		font-size: 31px;
-		    margin: 0;
+		    margin: 0 25px 0 0;
 		    padding: 23px 0 23px 30px;
             outline: none;
     	}   	
@@ -343,7 +343,7 @@ html, body, #content, #layout{
     				position: absolute;
 
     				&:hover{
-    					color: @green;
+    					color: @darkgreen;
     					cursor: pointer;
     				}
 
@@ -356,6 +356,19 @@ html, body, #content, #layout{
     					top: 13px;
     					right: 13px;
     				}
+
+                    &.customSort.selected, 
+                    &.dateCompletedSort.selected, 
+                    &.dateCreatedSort.selected, 
+                    &.dateCompletedSortInverse.selected, 
+                    &.dateCreatedSortInverse.selected{
+                        color: @green;
+
+                        &:hover{
+                            color: @darkgreen;
+                            cursor: pointer;
+                        }
+                    }
     			}
 
     			div{
@@ -483,7 +496,7 @@ html, body, #content, #layout{
     		border-left: 0px;
     	}
 
-    	#doing{
+    	#doing-column{
     		display: inline-block;
     		width: 100%;
     		height: 239px; 
@@ -495,7 +508,7 @@ html, body, #content, #layout{
     		
     	}
 
-    	#onhold{
+    	#onhold-column{
     		display:inline-block;
     		width:100%;
     		height:calc(100% - 200px);

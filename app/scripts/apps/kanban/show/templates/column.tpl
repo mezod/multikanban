@@ -1,13 +1,13 @@
 <div class="column-header">
-	<span id="dateCreatedSort" class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+	<span class="glyphicon glyphicon-sort dateCreatedSort" aria-hidden="true"></span>
 	<div>
 		<a><%= columnName %></a>
 		(<a id="counter"><%= numElems %></a>)
 	</div>
 	<% if (sortType == "list") { %>
-		<span id="customSort" class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+		<span class="glyphicon glyphicon-th-list customSort selected" aria-hidden="true"></span>
 	<% } else { %>
-		<span id="dateCompletedSort" class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+		<span class="glyphicon glyphicon-sort dateCompletedSort selected" aria-hidden="true"></span>
 	<% } %>
 </div>
 <ul id="<%= columnId %>" class="column-list">
