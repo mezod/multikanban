@@ -310,55 +310,54 @@ define([
 
 		    customSort: function(e){
 		    	console.log("column:customsort");
+		    	var column = this.columnId;
 		    	this.options.viewComparator = 'position';
 		    	this.collection.sort();
-		    	this.activateStyles(e,'.customSort');
+		    	this.activateStyles(column,'.customSort');
 		    },
 
 		    dateCreatedSort: function(e){
 		    	console.log("column:datecreatedsort");
+		    	var column = this.columnId;
 		    	this.options.viewComparator = 'dateCreated';
 		    	this.collection.sort();
-		    	this.activateStyles(e,'.dateCreatedSort');
-		    	$(e.currentTarget).addClass("dateCreatedSortInverse").removeClass("dateCreatedSort");
+		    	this.activateStyles(column,'.dateCreatedSort');
+		    	$('#'+column+'-column span.dateCreatedSort').addClass("dateCreatedSortInverse").removeClass("dateCreatedSort");
 		    },
 
 		    dateCreatedSortInverse: function(e){
 		    	console.log("column:datecreatedsortinverse");
+		    	var column = this.columnId;
 		    	this.options.viewComparator = 'dateCreated';
 		    	this.collection.sort();
-		    	this.activateStyles(e,'.dateCreatedSort');
-		    	$(e.currentTarget).addClass("dateCreatedSort").removeClass("dateCreatedSortInverse");
+		    	this.activateStyles(column,'.dateCreatedSortInverse');
+		    	// this.collection.reverse();
+		    	// this.collection.sort();
+		    	$('#'+column+'-column span.dateCreatedSortInverse').addClass("dateCreatedSort").removeClass("dateCreatedSortInverse");
 		    },
 
 		    dateCompletedSort: function(e){
 		    	console.log("column:datecompletedsort");
+		    	var column = this.columnId;
 		    	this.options.viewComparator = 'dateCompleted';
 		    	this.collection.sort();
-		    	this.activateStyles(e,'.dateCompletedSort');
+		    	this.activateStyles(column,'.dateCompletedSort');
+				$('#'+column+'-column span.dateCompletedSort').addClass("dateCompletedSortInverse").removeClass("dateCompletedSort");
 		    },
 
 		    dateCompletedSortInverse: function(e){
 		    	console.log("column:datecompletedsortinverse");
+		    	var column = this.columnId;
 		    	this.options.viewComparator = 'dateCompleted';
 		    	this.collection.sort();
-		    	this.activateStyles(e,'.dateCompletedSort');
+		    	
+		    	this.activateStyles(column,'.dateCompletedSortInverse');
+		    	$('#'+column+'-column span.dateCompletedSortInverse').addClass("dateCompletedSort").removeClass("dateCompletedSortInverse");
 		    },
 
-		    activateStyles: function(e, id){
-		    	//console.log(e.currentTarget.parentNode);
-		    	//console.log(e.currentTarget.parentNode.parentNode);
-		    	
-				console.log('wololo');
-		    	console.log($(e.currentTarget));
-		    	console.log($(e.currentTarget).siblings("span"));
-
-		    	$(e.currentTarget).siblings("span").removeClass("selected");
-				$(e.currentTarget).addClass("selected");
-
-		    	// var column = e.currentTarget.parentNode.parentNode.parentNode.id;
-		    	// $('#'+column+' span').removeClass("active");
-		    	// $('#'+column+' span'+id).addClass("active");
+		    activateStyles: function(column, id){
+		    	$('#'+column+'-column span').removeClass("selected");
+		    	$('#'+column+'-column span'+id).addClass("selected");
 		    },
 
 			onRender: function(){
@@ -394,6 +393,9 @@ define([
 			   	});
 
 			   	console.log(this.columnId);
+			   	console.log(this.cid);
+			   	console.log(this);
+			   	//debugger;
 			}
 
 		});

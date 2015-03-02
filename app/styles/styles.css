@@ -6979,7 +6979,7 @@ body,
 }
 #main-region #kanban-board .column ul {
   list-style: none;
-  height: 100%;
+  height: calc(100% - 40px);
 }
 #main-region #kanban-board .column ul .inputTask {
   height: 80px;
@@ -7082,7 +7082,7 @@ body,
 #main-region #kanban-board #onhold-column {
   display: inline-block;
   width: 100%;
-  height: calc(100% - 200px);
+  height: calc(100% - 240px);
 }
 #main-region #kanban-board #onhold-column .column-header {
   border-top: 1px solid #dddddd;

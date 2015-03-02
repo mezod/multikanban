@@ -271,9 +271,10 @@ define([
 
             	//update numElems
             	if(from != to){
-            		var counter = $('#'+from).find('#counter').get([0]).textContent;
+            		console.log($('#'+from+"-column").find('#counter'));
+            		var counter = $('#'+from+"-column").find('#counter').get([0]).textContent;
             		counter = parseInt(counter)-1;
-            		$('#'+from).find('#counter').text(counter);
+            		$('#'+from+"-column").find('#counter').text(counter);
             	}
             },
 
