@@ -7,7 +7,7 @@
     "backbone": "latest",
     "underscore": "latest",
     "bootstrap": "~3.2.0",
-    "backbone.marionette": "~2.4",
+    "backbone.marionette": "latest",
     "requirejs-underscore-tpl": "*",
     "requirejs-text": "~2.0.13",
     "normalize.css": "~3.0.2",

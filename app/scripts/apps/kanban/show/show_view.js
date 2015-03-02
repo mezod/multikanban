@@ -319,22 +319,43 @@ define([
 		    dateCreatedSort: function(e){
 		    	console.log("column:datecreatedsort");
 		    	var column = this.columnId;
-		    	this.options.viewComparator = 'dateCreated';
+
+		    	$('#'+column+'-column span').removeClass("selected");
+	    		$('#'+column+'-column span.dateCreatedSort')
+	    			.addClass("selected dateCreatedSortInverse")
+	    			.removeClass("dateCreatedSort");
+	    			
+		    	//this.options.viewComparator = 'dateCreated';
+		    	this.options.viewComparator = function(model) { 
+		    		return (new Date(model.get('dateCreated'))).getTime(); 
+		    	};
+		    	
 		    	this.collection.sort();
-		    	this.activateStyles(column,'.dateCreatedSort');
-		    	$('#'+column+'-column span.dateCreatedSort').addClass("dateCreatedSortInverse").removeClass("dateCreatedSort");
+		    		//that.activateStyles(column,'.dateCreatedSort');
+	    		
+		    	
+		    	
 		    },
 
 		    dateCreatedSortInverse: function(e){
 		    	console.log("column:datecreatedsortinverse");
 		    	var column = this.columnId;
-		    	this.options.viewComparator = 'dateCreated';
+
+		    	$('#'+column+'-column span').removeClass("selected");
+	    		$('#'+column+'-column span.dateCreatedSortInverse')
+	    			.addClass("selected dateCreatedSort")
+	    			.removeClass("dateCreatedSortInverse");
+
+		    	this.options.viewComparator = function(model) { 
+		    		return -(new Date(model.get('dateCreated'))).getTime(); 
+		    	};
 		    	this.collection.sort();
-		    	this.activateStyles(column,'.dateCreatedSortInverse');
-		    	// this.collection.reverse();
-		    	// this.collection.sort();
-		    	$('#'+column+'-column span.dateCreatedSortInverse').addClass("dateCreatedSort").removeClass("dateCreatedSortInverse");
-		    },
+		    	// 	this.activateStyles(column,'.dateCreatedSortInverse');
+	    		
+			    	//$('#'+column+'-column span.dateCreatedSortInverse').addClass("dateCreatedSort").removeClass("dateCreatedSortInverse");
+			    
+		    	
+		   	},
 
 		    dateCompletedSort: function(e){
 		    	console.log("column:datecompletedsort");
