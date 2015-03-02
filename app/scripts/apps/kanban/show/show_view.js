@@ -257,7 +257,7 @@ define([
 			},
 
 			initialize: function(options){
-				this.listenTo(this.collection, "sync", this.render);
+				//this.listenTo(this.collection, "sync", this.render);
 				this.columnName = options.columnName;
 				this.columnId = options.columnId;
 				this.sortType = options.sortType;
@@ -324,17 +324,12 @@ define([
 	    		$('#'+column+'-column span.dateCreatedSort')
 	    			.addClass("selected dateCreatedSortInverse")
 	    			.removeClass("dateCreatedSort");
-	    			
-		    	//this.options.viewComparator = 'dateCreated';
+
 		    	this.options.viewComparator = function(model) { 
 		    		return (new Date(model.get('dateCreated'))).getTime(); 
 		    	};
 		    	
 		    	this.collection.sort();
-		    		//that.activateStyles(column,'.dateCreatedSort');
-	    		
-		    	
-		    	
 		    },
 
 		    dateCreatedSortInverse: function(e){
@@ -349,32 +344,38 @@ define([
 		    	this.options.viewComparator = function(model) { 
 		    		return -(new Date(model.get('dateCreated'))).getTime(); 
 		    	};
-		    	this.collection.sort();
-		    	// 	this.activateStyles(column,'.dateCreatedSortInverse');
-	    		
-			    	//$('#'+column+'-column span.dateCreatedSortInverse').addClass("dateCreatedSort").removeClass("dateCreatedSortInverse");
-			    
-		    	
+		    	this.collection.sort();		    	
 		   	},
 
 		    dateCompletedSort: function(e){
 		    	console.log("column:datecompletedsort");
 		    	var column = this.columnId;
-		    	this.options.viewComparator = 'dateCompleted';
-		    	this.collection.sort();
-		    	this.activateStyles(column,'.dateCompletedSort');
-				$('#'+column+'-column span.dateCompletedSort').addClass("dateCompletedSortInverse").removeClass("dateCompletedSort");
+
+		    	$('#'+column+'-column span').removeClass("selected");
+	    		$('#'+column+'-column span.dateCompletedSort')
+	    			.addClass("selected dateCompletedSortInverse")
+	    			.removeClass("dateCompletedSort");
+
+		    	this.options.viewComparator = function(model) { 
+		    		return (new Date(model.get('dateCompleted'))).getTime(); 
+		    	};
+		    	this.collection.sort();	
 		    },
 
 		    dateCompletedSortInverse: function(e){
-		    	console.log("column:datecompletedsortinverse");
+				console.log("column:datecompletedsortinverse");
 		    	var column = this.columnId;
-		    	this.options.viewComparator = 'dateCompleted';
-		    	this.collection.sort();
-		    	
-		    	this.activateStyles(column,'.dateCompletedSortInverse');
-		    	$('#'+column+'-column span.dateCompletedSortInverse').addClass("dateCompletedSort").removeClass("dateCompletedSortInverse");
-		    },
+
+		    	$('#'+column+'-column span').removeClass("selected");
+	    		$('#'+column+'-column span.dateCompletedSortInverse')
+	    			.addClass("selected dateCompletedSort")
+	    			.removeClass("dateCompletedSortInverse");
+
+		    	this.options.viewComparator = function(model) { 
+		    		return -(new Date(model.get('dateCompleted'))).getTime(); 
+		    	};
+		    	this.collection.sort();	
+			},
 
 		    activateStyles: function(column, id){
 		    	$('#'+column+'-column span').removeClass("selected");

@@ -42,7 +42,8 @@ define([
 							collection: backlogTasks,
 							columnName: "Backlog",
 							columnId: "backlog",
-							sortType: "list"
+							sortType: "list",
+							reorderOnSort: true
 						});
 
 							backlog.on("task:new", function(){
@@ -81,7 +82,8 @@ define([
 							collection: todoTasks,
 							columnName: "To do",
 							columnId: "todo",
-							sortType: "list"
+							sortType: "list",
+							reorderOnSort: true
 						});
 
 							todo.on("childview:task:save", function(ChildView, model, text){
@@ -97,7 +99,8 @@ define([
 							collection: doingTasks,
 							columnName: "Doing",
 							columnId: "doing",
-							sortType: "list"
+							sortType: "list",
+							reorderOnSort: true
 						});
 
 							doing.on("childview:task:save", function(ChildView, model, text){
@@ -113,7 +116,8 @@ define([
 							collection: onholdTasks,
 							columnName: "On hold",
 							columnId: "onhold",
-							sortType: "list"
+							sortType: "list",
+							reorderOnSort: true
 						});
 
 							onhold.on("childview:task:save", function(ChildView, model, text){
@@ -129,7 +133,8 @@ define([
 							collection: doneTasks,
 							columnName: "Done",
 							columnId: "done",
-							sortType: "date"
+							sortType: "date",
+							reorderOnSort: true
 						});
 
 							done.on("childview:task:save", function(ChildView, model, text){
@@ -145,7 +150,14 @@ define([
 							collection: archiveTasks,
 							columnName: "Archive",
 							columnId: "archive",
-							sortType: "date"
+							sortType: "date",
+							reorderOnSort: true,
+
+							initialize: function(options){
+								this.options.viewComparator = function(model) { 
+						    		return -(new Date(model.get('dateCompleted'))).getTime(); 
+						    	};
+							}
 						});
 
 							archive.on("childview:task:save", function(ChildView, model, text){
