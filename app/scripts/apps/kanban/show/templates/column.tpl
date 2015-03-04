@@ -2,7 +2,7 @@
 	<span class="glyphicon glyphicon-sort dateCreatedSort" aria-hidden="true"></span>
 	<div>
 		<a><%= columnName %></a>
-		(<a id="counter"><%= numElems %></a>)
+		(<a id="counter"></a>)
 	</div>
 	<% if (sortType == "list") { %>
 		<span class="glyphicon glyphicon-th-list customSort selected" aria-hidden="true"></span>

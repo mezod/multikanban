@@ -246,6 +246,10 @@ define([
 			childView: View.Task,
 			childViewContainer: 'ul',
 
+			ui: {
+				counter: "#counter",
+			},
+
 			events: {
 				"click .newTask": "newTask",
 				"click .submitTask": "submitTask",
@@ -269,7 +273,7 @@ define([
 					columnName: this.columnName,
 					columnId: this.columnId,
 					sortType: this.sortType,
-					numElems: this.collection.length
+					//numElems: this.collection.length
 				}
 			},
 
@@ -414,6 +418,8 @@ define([
 			   		});
 			   	});
 
+			   	this.ui.counter.text(this.collection.length);
+			   	console.log(this.collection.length);
 			   	console.log(this.columnId);
 			   	console.log(this.cid);
 			   	console.log(this);

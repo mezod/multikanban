@@ -30,14 +30,17 @@ define([
 			            });
 
 					//tasks
-					backlogTasks = App.request("backlog:task:entities", kanban_id);
-					todoTasks = App.request("todo:task:entities", kanban_id);
-					doingTasks = App.request("doing:task:entities", kanban_id);
-					onholdTasks = App.request("onhold:task:entities", kanban_id);
-					doneTasks = App.request("done:task:entities", kanban_id);
-					archiveTasks = App.request("archive:task:entities", kanban_id);
+					var backlogFetch = App.request("backlog:task:entities", kanban_id);
+					var todoFetch = App.request("todo:task:entities", kanban_id);
+					var doingFetch = App.request("doing:task:entities", kanban_id);
+					var onholdFetch = App.request("onhold:task:entities", kanban_id);
+					var doneFetch = App.request("done:task:entities", kanban_id);
+					var archiveFetch = App.request("archive:task:entities", kanban_id);
 
-					$.when(backlogTasks, todoTasks, doingTasks, onholdTasks, doneTasks, archiveTasks).done(function(){
+					$.when(backlogFetch, todoFetch, doingFetch, onholdFetch, doneFetch, archiveFetch)
+					 .done(function(backlogTasks, todoTasks, doingTasks, onholdTasks, doneTasks, archiveTasks){
+						console.dir(backlogTasks);
+
 						var backlog = new View.Column({
 							collection: backlogTasks,
 							columnName: "Backlog",
@@ -134,7 +137,11 @@ define([
 							columnName: "Done",
 							columnId: "done",
 							sortType: "date",
-							reorderOnSort: true
+							reorderOnSort: true,
+
+							viewComparator : function(model) { 
+						    	return -(new Date(model.get('dateCompleted'))).getTime(); 
+						    }
 						});
 
 							done.on("childview:task:save", function(ChildView, model, text){
@@ -153,11 +160,9 @@ define([
 							sortType: "date",
 							reorderOnSort: true,
 
-							initialize: function(options){
-								this.options.viewComparator = function(model) { 
-						    		return -(new Date(model.get('dateCompleted'))).getTime(); 
-						    	};
-							}
+							viewComparator : function(model) { 
+						    	return -(new Date(model.get('dateCompleted'))).getTime(); 
+						    }	
 						});
 
 							archive.on("childview:task:save", function(ChildView, model, text){
