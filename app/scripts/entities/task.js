@@ -55,17 +55,11 @@ define([
           },
           success: function(data){
             defer.resolve(data);
-            console.log(data);
           }
         });
 
         var promise = defer.promise();
-        //console.log(promise);
-        // promise.done(function(data) {
-        //    console.log(data);
-        // })
-         return promise;
-        // return Entities.tasks;
+        return promise;
       }
     };
 

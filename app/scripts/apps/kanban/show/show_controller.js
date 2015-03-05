@@ -39,7 +39,7 @@ define([
 
 					$.when(backlogFetch, todoFetch, doingFetch, onholdFetch, doneFetch, archiveFetch)
 					 .done(function(backlogTasks, todoTasks, doingTasks, onholdTasks, doneTasks, archiveTasks){
-					 	//console.log(backlogTasks);
+
 						var backlog = new View.Column({
 							collection: backlogTasks,
 							columnName: "Backlog",
@@ -183,9 +183,8 @@ define([
 							kanbanLayout.archive.show(archive);
 						});
 
-						App.once("fetched:kanban", function(){
-							App.mainLayout.mainRegion.show(kanbanLayout);
-						});
+						App.mainLayout.mainRegion.show(kanbanLayout);
+						
 					});
 					
 				});
