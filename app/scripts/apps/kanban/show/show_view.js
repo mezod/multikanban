@@ -237,7 +237,6 @@ define([
 		    	console.log(sender);
 		    	console.log(placeholder);
 		    	this.trigger('task:change', this.model, index, sender, placeholder);
-
 		    }
 		});
 

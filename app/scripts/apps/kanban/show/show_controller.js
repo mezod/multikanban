@@ -10,6 +10,13 @@ define([
 		var doneTasks = null;
 		var archiveTasks = null;
 
+		backlog = null;
+		todo = null;
+		doing = null;
+		onhold = null;
+		done = null;
+		archive = null;
+
 		Show.Controller = {
 			showTasks: function(kanban_id){
 				require(["entities/task", "entities/kanban"], function(){
@@ -38,9 +45,16 @@ define([
 					var archiveFetch = App.request("archive:task:entities", kanban_id);
 
 					$.when(backlogFetch, todoFetch, doingFetch, onholdFetch, doneFetch, archiveFetch)
-					 .done(function(backlogTasks, todoTasks, doingTasks, onholdTasks, doneTasks, archiveTasks){
+					 .done(function(backlogCollection, todoCollection, doingCollection, onholdCollection, doneCollection, archiveCollection){
 
-						var backlog = new View.Column({
+					 	backlogTasks = backlogCollection;
+						todoTasks = todoCollection;
+						doingTasks = doingCollection;
+						onholdTasks = onholdCollection;
+						doneTasks = doneCollection;
+						archiveTasks = archiveCollection;
+
+						backlog = new View.Column({
 							collection: backlogTasks,
 							columnName: "Backlog",
 							columnId: "backlog",
@@ -80,7 +94,7 @@ define([
 				            	Show.Controller.changeTask(ChildView, model, index, from, to);
 				            });
 
-						var todo = new View.Column({
+						todo = new View.Column({
 							collection: todoTasks,
 							columnName: "To do",
 							columnId: "todo",
@@ -97,7 +111,7 @@ define([
 				            	Show.Controller.changeTask(ChildView, model, index, from, to);
 				            });
 
-						var doing = new View.Column({
+						doing = new View.Column({
 							collection: doingTasks,
 							columnName: "Doing",
 							columnId: "doing",
@@ -114,7 +128,7 @@ define([
 				            	Show.Controller.changeTask(ChildView, model, index, from, to);
 				            });
 
-						var onhold = new View.Column({
+						onhold = new View.Column({
 							collection: onholdTasks,
 							columnName: "On hold",
 							columnId: "onhold",
@@ -131,7 +145,7 @@ define([
 				            	Show.Controller.changeTask(ChildView, model, index, from, to);
 				            });
 
-						var done = new View.Column({
+						done = new View.Column({
 							collection: doneTasks,
 							columnName: "Done",
 							columnId: "done",
@@ -152,7 +166,7 @@ define([
 				            	Show.Controller.changeTask(ChildView, model, index, from, to);
 				            });
 
-						var archive = new View.Column({
+						archive = new View.Column({
 							collection: archiveTasks,
 							columnName: "Archive",
 							columnId: "archive",
@@ -228,11 +242,17 @@ define([
 
             	oldIndex = model.attributes.position;
 
-            	model.save(data);
-
+            	//model.save(data);
+            	console.log(ChildView);
 
             	//frontend
             	//model right state and index (by default when PUT)
+
+            	//rerender task view to show date completed
+            	$.when(model.save(data)).done(function(){
+            		console.log(model);
+            		ChildView.render();
+            	});
 
             	//other tasks in to and from update index
             	switch(from){
@@ -286,11 +306,16 @@ define([
 
             	//update numElems
             	if(from != to){
-            		console.log($('#'+from+"-column").find('#counter'));
+            		//console.log($('#'+from+"-column").find('#counter'));
             		var counter = $('#'+from+"-column").find('#counter').get([0]).textContent;
             		counter = parseInt(counter)-1;
             		$('#'+from+"-column").find('#counter').text(counter);
+
+            		counter = $('#'+to+"-column").find('#counter').get([0]).textContent;
+            		counter = parseInt(counter)+1;
+            		$('#'+to+"-column").find('#counter').text(counter);
             	}
+
             },
 
             updatePosition: function(collection, oldIndex, newIndex){
