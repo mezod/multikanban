@@ -247,74 +247,77 @@ define([
 
             	//frontend
             	//model right state and index (by default when PUT)
-
+            	var that = this;
             	//rerender task view to show date completed
             	$.when(model.save(data)).done(function(){
             		console.log(model);
+            		console.log(ChildView);
             		ChildView.render();
+
+            		//other tasks in to and from update index
+	            	switch(from){
+	            		case 'backlog':
+	            			backlogTasks.remove(model);
+	            			break;
+	            		case 'todo':
+	            			todoTasks.remove(model);
+	            			break;
+	            		case 'doing':
+	            			doingTasks.remove(model);
+	            			break;
+	            		case 'onhold':
+	            			onholdTasks.remove(model);
+	            			break;
+	            		case 'done':
+	            			doneTasks.remove(model);
+	            			break;
+	            		case 'archive':
+	            			archiveTasks.remove(model);
+	            			break;
+	            	}
+
+	            	
+	            	switch(to){
+	            		case 'backlog':	
+	            			that.updatePosition(backlogTasks, oldIndex, index);
+					        backlogTasks.add(model);
+	            			break;
+	            		case 'todo':
+	            			that.updatePosition(todoTasks, oldIndex, index);
+	            			todoTasks.add(model);
+	            			break;
+	            		case 'doing':
+	            			that.updatePosition(doingTasks, oldIndex, index);
+	            			doingTasks.add(model);
+	            			break;
+	            		case 'onhold':
+	            			that.updatePosition(onholdTasks, oldIndex, index);
+	            			onholdTasks.add(model);
+	            			break;
+	            		case 'done':
+	            			that.updatePosition(doneTasks, oldIndex, index);
+	            			doneTasks.add(model);
+	            			break;
+	            		case 'archive':
+	            			that.updatePosition(archiveTasks, oldIndex, index);
+	            			archiveTasks.add(model);
+	            			break;
+	            	}
+
+	            	//update numElems
+	            	if(from != to){
+	            		//console.log($('#'+from+"-column").find('#counter'));
+	            		var counter = $('#'+from+"-column").find('#counter').get([0]).textContent;
+	            		counter = parseInt(counter)-1;
+	            		$('#'+from+"-column").find('#counter').text(counter);
+
+	            		counter = $('#'+to+"-column").find('#counter').get([0]).textContent;
+	            		counter = parseInt(counter)+1;
+	            		$('#'+to+"-column").find('#counter').text(counter);
+	            	}
             	});
 
-            	//other tasks in to and from update index
-            	switch(from){
-            		case 'backlog':
-            			backlogTasks.remove(model);
-            			break;
-            		case 'todo':
-            			todoTasks.remove(model);
-            			break;
-            		case 'doing':
-            			doingTasks.remove(model);
-            			break;
-            		case 'onhold':
-            			onholdTasks.remove(model);
-            			break;
-            		case 'done':
-            			doneTasks.remove(model);
-            			break;
-            		case 'archive':
-            			archiveTasks.remove(model);
-            			break;
-            	}
-
             	
-            	switch(to){
-            		case 'backlog':	
-            			this.updatePosition(backlogTasks, oldIndex, index);
-				        backlogTasks.add(model);
-            			break;
-            		case 'todo':
-            			this.updatePosition(todoTasks, oldIndex, index);
-            			todoTasks.add(model);
-            			break;
-            		case 'doing':
-            			this.updatePosition(doingTasks, oldIndex, index);
-            			doingTasks.add(model);
-            			break;
-            		case 'onhold':
-            			this.updatePosition(onholdTasks, oldIndex, index);
-            			onholdTasks.add(model);
-            			break;
-            		case 'done':
-            			this.updatePosition(doneTasks, oldIndex, index);
-            			doneTasks.add(model);
-            			break;
-            		case 'archive':
-            			this.updatePosition(archiveTasks, oldIndex, index);
-            			archiveTasks.add(model);
-            			break;
-            	}
-
-            	//update numElems
-            	if(from != to){
-            		//console.log($('#'+from+"-column").find('#counter'));
-            		var counter = $('#'+from+"-column").find('#counter').get([0]).textContent;
-            		counter = parseInt(counter)-1;
-            		$('#'+from+"-column").find('#counter').text(counter);
-
-            		counter = $('#'+to+"-column").find('#counter').get([0]).textContent;
-            		counter = parseInt(counter)+1;
-            		$('#'+to+"-column").find('#counter').text(counter);
-            	}
 
             },
 

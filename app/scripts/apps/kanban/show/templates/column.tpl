@@ -1,5 +1,5 @@
 <div class="column-header">
-	<span class="glyphicon glyphicon-sort dateCreatedSort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Sort by Date Created"></span>
+	<span class="glyphicon glyphicon-sort dateCreatedSort" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Sort by Date Created (asc/desc)"></span>
 	<div>
 		<a><%= columnName %></a>
 		(<a id="counter"></a>)
@@ -7,7 +7,7 @@
 	<% if (sortType == "list") { %>
 		<span class="glyphicon glyphicon-th-list customSort selected" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Sort by Custom Sort"></span>
 	<% } else { %>
-		<span class="glyphicon glyphicon-sort dateCompletedSort selected" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Sort by Date Completed"></span>
+		<span class="glyphicon glyphicon-sort dateCompletedSort selected" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Sort by Date Completed (asc/desc)"></span>
 	<% } %>
 </div>
 <ul id="<%= columnId %>" class="column-list">
