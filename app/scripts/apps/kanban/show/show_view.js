@@ -418,11 +418,19 @@ define([
 			   		});
 			   	});
 
+				require(["bootstrap"], function(){
+					
+					$('[data-toggle="tooltip"]').tooltip();
+				});
+
+			   	
+				
+
 			   	this.ui.counter.text(this.collection.length);
 			   	console.log(this.collection.length);
-			   	console.log(this.columnId);
-			   	console.log(this.cid);
-			   	console.log(this);
+			   	// console.log(this.columnId);
+			   	// console.log(this.cid);
+			   	// console.log(this);
 			   	//debugger;
 			}
 

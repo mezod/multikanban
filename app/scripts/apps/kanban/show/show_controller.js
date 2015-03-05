@@ -39,8 +39,7 @@ define([
 
 					$.when(backlogFetch, todoFetch, doingFetch, onholdFetch, doneFetch, archiveFetch)
 					 .done(function(backlogTasks, todoTasks, doingTasks, onholdTasks, doneTasks, archiveTasks){
-						console.dir(backlogTasks);
-
+					 	//console.log(backlogTasks);
 						var backlog = new View.Column({
 							collection: backlogTasks,
 							columnName: "Backlog",

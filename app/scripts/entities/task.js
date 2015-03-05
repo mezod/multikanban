@@ -48,16 +48,24 @@ define([
     var API = {
       getTasks: function(state, kanban_id){
         Entities.tasks = new Entities.TaskCollection([], {'state' : state, 'kanban_id': kanban_id});
+        var defer = $.Deferred();
         Entities.tasks.fetch({
           beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization','token '+App.loggedInUser.token);
           },
           success: function(data){
-            //console.log(data);
+            defer.resolve(data);
+            console.log(data);
           }
         });
 
-        return Entities.tasks;
+        var promise = defer.promise();
+        //console.log(promise);
+        // promise.done(function(data) {
+        //    console.log(data);
+        // })
+         return promise;
+        // return Entities.tasks;
       }
     };
 
