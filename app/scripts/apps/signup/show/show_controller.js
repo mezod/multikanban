@@ -13,7 +13,7 @@ define([
 					console.log("signup");
 					//signup logic
 
-					var url = '../../multikanban-api/web/users';
+					var url = 'http://api.multikanban.com/users';
 					var formValues = {
 			            username: $('#inputUsername').val(),
 			            password: $('#inputPassword').val(),
