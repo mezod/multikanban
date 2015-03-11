@@ -5,5 +5,6 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} !index
+    RewriteCond %{REQUEST_URI} !multikanban-api 
     RewriteRule (.*) app/index.html [L]
 </ifModule>
