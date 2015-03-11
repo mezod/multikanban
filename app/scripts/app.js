@@ -34,7 +34,7 @@ define(["marionette"], function(Marionette){
 					App.loggedInUser = JSON.parse(window.localStorage.getItem('multikanban user'));
 				}
 
-	        	Backbone.history.start({pushState: true, root: "/multikanban/app/"});
+	        	Backbone.history.start({pushState: true});
 
 	        	if(App.getCurrentRoute() === undefined){
 		        	console.log("undefined current route");
