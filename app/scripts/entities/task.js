@@ -17,16 +17,16 @@ define([
 
         switch (method) {
             case "create":
-                options.url = "/multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks";
+                options.url = "../../../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks";
                 break;
             case "read":
-                options.url = "/multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks/"+model.get("id");
+                options.url = "../../../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks/"+model.get("id");
                 break;
             case "delete":
-                options.url = "/multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks/"+model.get("id");
+                options.url = "../../../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks/"+model.get("id");
                 break;
             case "update":
-                options.url = "/multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks/"+model.get("id");
+                options.url = "../../../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+this.kanban_id+"/tasks/"+model.get("id");
                 break;
         }
 
@@ -41,7 +41,7 @@ define([
 
       initialize: function(collection, options){
 
-        this.url = "/multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+options.kanban_id+"/tasks/"+options.state;
+        this.url = "../../../../multikanban-api/web/users/"+App.loggedInUser.id+"/kanbans/"+options.kanban_id+"/tasks/"+options.state;
       }
     });
 
