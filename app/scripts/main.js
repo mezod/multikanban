@@ -1,4 +1,5 @@
 require.config({
+  baseUrl: '/scripts',
   paths: {
     'jquery': 'vendor/jquery/dist/jquery',
     lodash: 'vendor/lodash/dist/lodash',
@@ -30,7 +31,6 @@ require.config({
   		exports: 'Marionette',
   		deps: ['backbone']
   	},
-    baseUrl: '/scripts'
   },
   // deps: ['app']
 });
