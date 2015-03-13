@@ -29,7 +29,8 @@ require.config({
   	marionette: {
   		exports: 'Marionette',
   		deps: ['backbone']
-  	}
+  	},
+    baseUrl: '/scripts'
   },
   // deps: ['app']
 });
