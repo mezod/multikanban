@@ -6873,6 +6873,15 @@ body,
   padding: 23px 0 23px 30px;
   outline: none;
 }
+#main-region header h1 a {
+  color: #bbbbbb;
+}
+#main-region header h1 a span {
+  color: #27ae60;
+}
+#main-region header h1 a:first-child {
+  margin-left: 100px;
+}
 #main-region .activity-item {
   padding: 15px;
 }
