@@ -6882,11 +6882,28 @@ body,
 #main-region header h1 a:first-child {
   margin-left: 100px;
 }
+#main-region h1 {
+  font-size: 31px;
+  margin: 25px 0 0 0;
+  padding: 23px 0 23px 30px;
+  outline: none;
+}
+#main-region h1 a {
+  color: #bbbbbb;
+  border: 1px solid #dddddd;
+  padding: 20px;
+}
+#main-region h1 a span {
+  color: #27ae60;
+}
 #main-region .activity-item {
-  padding: 15px;
+  padding: 25px 15px 0px 28px;
 }
 #main-region .activity-item a {
   color: #27ae60;
+}
+#main-region .activity-item:first-child {
+  padding-top: 40px;
 }
 #main-region > div {
   height: 100%;

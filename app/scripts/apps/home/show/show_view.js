@@ -8,13 +8,42 @@ define([
 		View.Home = Marionette.ItemView.extend({
 			tagName: "li",
 			className: "activity-item",
-			template: listItemTpl
+			template: listItemTpl,
+
+			// initialize: function(options){
+			// 	completedtask = options;
+			// 	console.log(options);
+			// },
+
+			serializeData: function(){
+
+				return {
+					dateCompleted: this.model.attributes.dateCompleted,
+					text: this.model.attributes.text
+				};
+			}
 		});
 
 		View.Homes = Marionette.CompositeView.extend({
 			template: listTpl,
 			childView: View.Home,
-			childViewContainer: 'ul'
+			childViewContainer: 'ul',
+
+			initialize: function(options){
+				stats = options.stats;
+				console.log(stats.attributes.numberKanbans);
+			},
+
+			serializeData: function(){
+
+				return {
+					numberKanbans: stats.attributes.numberKanbans,
+					numberCompletedTasks: stats.attributes.numberCompletedTasks,
+					numberTasks: stats.attributes.numberTasks
+				};
+			}
+
+
 		});
 	});
 
