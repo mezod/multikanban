@@ -36,6 +36,10 @@ define([
       API.listCompletedTasks();
     });
 
+    App.on("home:update", function(){
+      if(Backbone.history.fragment == "home") API.listCompletedTasks();
+    });
+
     HomeApp.addInitializer(function(){
       new HomeApp.Router({
         controller: API

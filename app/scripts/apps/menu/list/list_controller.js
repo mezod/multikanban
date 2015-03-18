@@ -41,6 +41,9 @@ define([
 		               		newKanban.save(data).then(function(){
 		               			console.log(newKanban);
 		               			kanbans.add(newKanban);
+
+		               			var href = "kanban/"+newKanban.id;
+		               			App.trigger("kanban:show", href);
 		               		});
 
 
@@ -65,7 +68,12 @@ define([
 						});
 
 						modal.on("confirm:delete", function(){
+							if(Backbone.history.fragment == "kanban/"+args.model.attributes.id) 
+								App.trigger("home:show");
+							
 							args.model.destroy();
+							App.trigger("home:update");
+
 						});
 
 		            	//args.model.destroy();
