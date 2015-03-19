@@ -6670,6 +6670,10 @@ th {
   font-family: opensans-SemiboldItalic;
   src: url(../fonts/open-sans/OpenSans-SemiboldItalic.ttf);
 }
+@font-face {
+  font-family: icomoon;
+  src: url(../fonts/icomoon/icomoon.ttf);
+}
 body {
   background-color: white;
   font-family: "opensans-Light";
@@ -7127,4 +7131,38 @@ body,
   background-color: #27ae60;
   border-color: #fff;
   color: #fff;
+}
+/* LANDING */
+.landing-div {
+  height: 100%;
+}
+#landing {
+  width: 960px;
+  margin: 0 auto;
+  min-height: 100%;
+}
+#landing a {
+  color: #555;
+}
+#landing #landing-header {
+  font-family: opensans-Semibold;
+  margin-top: 60px;
+  height: 30px;
+}
+#landing #landing-header div {
+  float: right;
+}
+#landing #landing-header a {
+  margin-right: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.75rem;
+}
+#landing #landing-header a:hover {
+  color: #27ae60;
+  cursor: pointer;
+}
+#landing #landing-header .underline {
+  border-bottom: 4px solid #27ae60;
+  padding-bottom: 4px;
 }

@@ -5,7 +5,8 @@ define([
 	App.module("LandingApp.Show.View", function(View, App, Backbone, Marionette, $, _){
 
 		View.Landing = Marionette.ItemView.extend({
-			template: landingTpl
+			template: landingTpl,
+			className: "landing-div"
 		});
 	});
 
