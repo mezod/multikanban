@@ -43,5 +43,5 @@ define([
     });
   });
 
-  return App.App;
+  return App;
 });

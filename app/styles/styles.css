@@ -7514,8 +7514,6 @@ body,
   width: 300px;
   height: 48px;
   padding: 0 20px;
-  background-color: #27ae60;
-  color: #fff;
 }
 .login-div #login-presentation #login button {
   background: none repeat scroll 0 0 padding-box #27ae60;
@@ -7652,8 +7650,6 @@ body,
   width: 300px;
   height: 48px;
   padding: 0 20px;
-  background-color: #27ae60;
-  color: #fff;
 }
 .signup-div #signup-presentation #signup button {
   background: none repeat scroll 0 0 padding-box #27ae60;

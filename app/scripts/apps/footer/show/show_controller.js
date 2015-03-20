@@ -12,6 +12,18 @@ define([
 						collection: footers
 					});
 
+					footersShowView.on("home:show", function(){
+						App.trigger("home:show");
+					});
+
+					footersShowView.on("help:show", function(){
+						App.trigger("help:show");
+					});
+
+					footersShowView.on("about:show", function(){
+						App.trigger("about:show");
+					});
+
 					App.mainLayout.footerRegion.show(footersShowView);
 				});
 			}
