@@ -16,6 +16,21 @@ define([
 							landingstats: landingstats
 						});
 
+						landingShowView.on("landing:show", function(){
+
+							App.trigger("landing:show");
+						});
+
+						landingShowView.on("login:show", function(){
+
+							App.trigger("login:show");
+						});
+
+						landingShowView.on("signup:show", function(){
+
+							App.trigger("signup:show");
+						});
+
 						App.contentRegion.show(landingShowView);
 					});
 

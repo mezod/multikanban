@@ -8,6 +8,21 @@ define([
 
 				var loginShowView = new View.Login();
 
+				loginShowView.on("landing:show", function(){
+
+					App.trigger("landing:show");
+				});
+
+				loginShowView.on("login:show", function(){
+
+					App.trigger("login:show");
+				});
+
+				loginShowView.on("signup:show", function(){
+
+					App.trigger("signup:show");
+				});
+
 				loginShowView.on("login", function(){
 
 					console.log("login");

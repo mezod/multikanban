@@ -49,6 +49,7 @@
 
 		#brand{
 			font-family: 'ubuntu-R';
+			cursor: pointer;
 
 			span{
 				color: @green;
@@ -233,6 +234,336 @@
 	}
 
 	#landing-footer{
+		width: 960px;
+		margin: 0 auto;
+		padding: 30px 0;
+
+		div{
+			display: inline;
+
+			span, a{
+				color: @green;
+
+				&:hover{
+					text-decoration: underline;
+					cursor: pointer;
+				}
+			}
+		}
+	
+		ul{
+			float: right;
+			list-style: none;
+
+			li{
+				display: inline-block;
+
+				a{
+
+					&:hover{
+						color: @green;
+						cursor: pointer;
+					}
+				}
+
+				&:after{
+					content: "|";
+					padding: 0 20px;
+					color: @grey;
+				}
+
+				&:last-child:after{
+					content: none;
+				}
+			}
+		}	
+	}
+}
+
+/* LOGIN */
+
+.login-div{
+	min-height: 100%;
+	font-family: 'ubuntu-L';
+
+	a{
+		color: #333;
+	}
+
+	#login-header{
+		font-family: opensans-Semibold;
+		height: 30px;
+		width: 960px;
+		margin: 60px auto 0;
+
+		div{
+			float: right;
+		}
+		
+		a{
+			margin-right: 30px;
+			font-weight: 600;
+		    letter-spacing: 1px;
+		    line-height: 1.75rem;
+
+		    &:hover{
+		    	color: @green;
+		    	cursor: pointer;
+		    }
+		}
+
+		.underline{
+			border-bottom: 4px solid @green;
+		    padding-bottom: 4px;
+		}
+	}
+
+	#login-presentation{
+		@media (max-width:1200px){ 
+			min-height: calc( 100vh - 90px );
+		}
+		width: 960px;
+		margin: 0 auto;
+		border-bottom: 1px solid @grey;
+		padding-bottom: 100px;
+
+		#brand{
+			font-family: 'ubuntu-R';
+			cursor: pointer;
+
+			a{
+				color: @green;
+				font-size: 30px;
+
+				span{
+					font-size: 22px;
+				} 
+			}
+
+			p{
+				font-size: 14px;
+				margin-top: -6px;
+				font-family: 'ubuntu-L';
+			}
+		}
+
+		#login{
+			width: 402px;
+			margin: 50px auto;
+			padding: 50px 50px 100px;
+			border: 1px solid @green;
+			border-radius: 3px;
+
+			#login-error{
+				list-style: none;
+				color: red;
+				margin-bottom: 20px;
+			}
+
+			a{
+				font-size: 26px;
+				padding-bottom: 20px;
+				display: block;
+			}
+
+			input{
+				border-radius: 3px;
+				border: 1px solid @green;
+				margin-bottom: 25px;
+				width: 300px;
+				height: 48px;
+				padding: 0 20px;
+				background-color: @green;
+				color: #fff;
+			}
+
+			button{
+				background: none repeat scroll 0 0 padding-box @green;
+			    border-radius: 3px;
+			    color: #fff;
+			    display: block;
+			    font-family: 'ubuntu-R';
+			    font-weight: 700;
+			    padding: 1em 2.618em;
+			    text-transform: uppercase;
+			    border: none;
+			    float: right;
+
+			    &:hover{
+			    	color: @green;
+			    	background-color: #fff;
+			    	cursor: pointer;
+			    }
+			}
+		}
+	}
+
+	#login-footer{
+		width: 960px;
+		margin: 0 auto;
+		padding: 30px 0;
+
+		div{
+			display: inline;
+
+			span, a{
+				color: @green;
+
+				&:hover{
+					text-decoration: underline;
+					cursor: pointer;
+				}
+			}
+		}
+	
+		ul{
+			float: right;
+			list-style: none;
+
+			li{
+				display: inline-block;
+
+				a{
+
+					&:hover{
+						color: @green;
+						cursor: pointer;
+					}
+				}
+
+				&:after{
+					content: "|";
+					padding: 0 20px;
+					color: @grey;
+				}
+
+				&:last-child:after{
+					content: none;
+				}
+			}
+		}	
+	}
+}
+
+/* SIGNUP */
+
+.signup-div{
+	min-height: 100%;
+	font-family: 'ubuntu-L';
+
+	a{
+		color: #333;
+	}
+
+	#signup-header{
+		font-family: opensans-Semibold;
+		height: 30px;
+		width: 960px;
+		margin: 60px auto 0;
+
+		div{
+			float: right;
+		}
+		
+		a{
+			margin-right: 30px;
+			font-weight: 600;
+		    letter-spacing: 1px;
+		    line-height: 1.75rem;
+
+		    &:hover{
+		    	color: @green;
+		    	cursor: pointer;
+		    }
+		}
+
+		.underline{
+			border-bottom: 4px solid @green;
+		    padding-bottom: 4px;
+		}
+	}
+
+	#signup-presentation{
+		@media (max-width:1200px){ 
+			min-height: calc( 100vh - 90px );
+		}
+		width: 960px;
+		margin: 0 auto;
+		border-bottom: 1px solid @grey;
+		padding-bottom: 100px;
+
+		#brand{
+			font-family: 'ubuntu-R';
+
+			a{
+				color: @green;
+				font-size: 30px;
+				cursor: pointer;
+
+				span{
+					font-size: 22px;
+				} 
+			}
+
+			p{
+				font-size: 14px;
+				margin-top: -6px;
+				font-family: 'ubuntu-L';
+			}
+		}
+
+		#signup{
+			width: 402px;
+			margin: 50px auto;
+			padding: 50px 50px 100px;
+			border: 1px solid @green;
+			border-radius: 3px;
+
+			#signup-error{
+				list-style: none;
+				color: red;
+				margin-bottom: 20px;
+			}
+
+			a{
+				font-size: 26px;
+				padding-bottom: 20px;
+				display: block;
+			}
+
+			input{
+				border-radius: 3px;
+				border: 1px solid @green;
+				margin-bottom: 25px;
+				width: 300px;
+				height: 48px;
+				padding: 0 20px;
+				background-color: @green;
+				color: #fff;
+			}
+
+			button{
+				background: none repeat scroll 0 0 padding-box @green;
+			    border-radius: 3px;
+			    color: #fff;
+			    display: block;
+			    font-family: 'ubuntu-R';
+			    font-weight: 700;
+			    padding: 1em 2.618em;
+			    text-transform: uppercase;
+			    border: none;
+			    float: right;
+
+			    &:hover{
+			    	color: @green;
+			    	background-color: #fff;
+			    	cursor: pointer;
+			    }
+			}
+		}
+	}
+
+	#signup-footer{
 		width: 960px;
 		margin: 0 auto;
 		padding: 30px 0;

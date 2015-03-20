@@ -1,20 +1,19 @@
 <div id="landing">
 	<section id="landing-header">
 		<div>
-			<a href="login">LOG IN</a>
-			<a href="signup" class="underline">SIGN UP</a>
+			<a class="login" href="login">LOG IN</a>
+			<a class="signup underline" href="signup">SIGN UP</a>
 		</div>
 	</section>
 	<section id="landing-presentation">
 		<div id="brand">
-			<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-			<a>multikanban</a><p>A simple kanban for multiple personal projects</p>
+			<a class="brand"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> multikanban</a><p>A simple kanban for multiple personal projects</p>
 		</div>
 		<div id="slogan">
 			<p class="big">Organize yourself. Get things done. Feel good.</p>
 			<p>Multikanban helps you translate your ideas into real projects and to get them see the light. A project is just a collection of tasks: Visualize and hunt them down!</p>
 		</div>
-		<a class="button">SIGN UP</a>
+		<a class="button signup">SIGN UP</a>
 	</section>
 	<section id="landing-stats">
 		<ul>

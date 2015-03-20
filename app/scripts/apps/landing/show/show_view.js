@@ -8,6 +8,12 @@ define([
 			template: landingTpl,
 			className: "landing-div",
 
+			triggers: { 
+				"click .brand": "landing:show",
+				"click .login": "login:show",
+				"click .signup": "signup:show"
+			},
+			
 			initialize: function(options){
 				landingstats = options.landingstats;
 			},
@@ -30,6 +36,7 @@ define([
 					   container: 'body'
 					});
 				});
+				
 			}
 		});
 	});

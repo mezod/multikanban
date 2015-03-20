@@ -7248,6 +7248,7 @@ body,
 }
 #landing #landing-presentation #brand {
   font-family: 'ubuntu-R';
+  cursor: pointer;
 }
 #landing #landing-presentation #brand span {
   color: #27ae60;
@@ -7429,5 +7430,281 @@ body,
   color: #dddddd;
 }
 #landing #landing-footer ul li:last-child:after {
+  content: none;
+}
+/* LOGIN */
+.login-div {
+  min-height: 100%;
+  font-family: 'ubuntu-L';
+}
+.login-div a {
+  color: #333;
+}
+.login-div #login-header {
+  font-family: opensans-Semibold;
+  height: 30px;
+  width: 960px;
+  margin: 60px auto 0;
+}
+.login-div #login-header div {
+  float: right;
+}
+.login-div #login-header a {
+  margin-right: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.75rem;
+}
+.login-div #login-header a:hover {
+  color: #27ae60;
+  cursor: pointer;
+}
+.login-div #login-header .underline {
+  border-bottom: 4px solid #27ae60;
+  padding-bottom: 4px;
+}
+.login-div #login-presentation {
+  width: 960px;
+  margin: 0 auto;
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 100px;
+}
+@media (max-width: 1200px) {
+  .login-div #login-presentation {
+    min-height: calc(100vh - 90px);
+  }
+}
+.login-div #login-presentation #brand {
+  font-family: 'ubuntu-R';
+  cursor: pointer;
+}
+.login-div #login-presentation #brand a {
+  color: #27ae60;
+  font-size: 30px;
+}
+.login-div #login-presentation #brand a span {
+  font-size: 22px;
+}
+.login-div #login-presentation #brand p {
+  font-size: 14px;
+  margin-top: -6px;
+  font-family: 'ubuntu-L';
+}
+.login-div #login-presentation #login {
+  width: 402px;
+  margin: 50px auto;
+  padding: 50px 50px 100px;
+  border: 1px solid #27ae60;
+  border-radius: 3px;
+}
+.login-div #login-presentation #login #login-error {
+  list-style: none;
+  color: red;
+  margin-bottom: 20px;
+}
+.login-div #login-presentation #login a {
+  font-size: 26px;
+  padding-bottom: 20px;
+  display: block;
+}
+.login-div #login-presentation #login input {
+  border-radius: 3px;
+  border: 1px solid #27ae60;
+  margin-bottom: 25px;
+  width: 300px;
+  height: 48px;
+  padding: 0 20px;
+  background-color: #27ae60;
+  color: #fff;
+}
+.login-div #login-presentation #login button {
+  background: none repeat scroll 0 0 padding-box #27ae60;
+  border-radius: 3px;
+  color: #fff;
+  display: block;
+  font-family: 'ubuntu-R';
+  font-weight: 700;
+  padding: 1em 2.618em;
+  text-transform: uppercase;
+  border: none;
+  float: right;
+}
+.login-div #login-presentation #login button:hover {
+  color: #27ae60;
+  background-color: #fff;
+  cursor: pointer;
+}
+.login-div #login-footer {
+  width: 960px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.login-div #login-footer div {
+  display: inline;
+}
+.login-div #login-footer div span,
+.login-div #login-footer div a {
+  color: #27ae60;
+}
+.login-div #login-footer div span:hover,
+.login-div #login-footer div a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.login-div #login-footer ul {
+  float: right;
+  list-style: none;
+}
+.login-div #login-footer ul li {
+  display: inline-block;
+}
+.login-div #login-footer ul li a:hover {
+  color: #27ae60;
+  cursor: pointer;
+}
+.login-div #login-footer ul li:after {
+  content: "|";
+  padding: 0 20px;
+  color: #dddddd;
+}
+.login-div #login-footer ul li:last-child:after {
+  content: none;
+}
+/* SIGNUP */
+.signup-div {
+  min-height: 100%;
+  font-family: 'ubuntu-L';
+}
+.signup-div a {
+  color: #333;
+}
+.signup-div #signup-header {
+  font-family: opensans-Semibold;
+  height: 30px;
+  width: 960px;
+  margin: 60px auto 0;
+}
+.signup-div #signup-header div {
+  float: right;
+}
+.signup-div #signup-header a {
+  margin-right: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.75rem;
+}
+.signup-div #signup-header a:hover {
+  color: #27ae60;
+  cursor: pointer;
+}
+.signup-div #signup-header .underline {
+  border-bottom: 4px solid #27ae60;
+  padding-bottom: 4px;
+}
+.signup-div #signup-presentation {
+  width: 960px;
+  margin: 0 auto;
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 100px;
+}
+@media (max-width: 1200px) {
+  .signup-div #signup-presentation {
+    min-height: calc(100vh - 90px);
+  }
+}
+.signup-div #signup-presentation #brand {
+  font-family: 'ubuntu-R';
+}
+.signup-div #signup-presentation #brand a {
+  color: #27ae60;
+  font-size: 30px;
+  cursor: pointer;
+}
+.signup-div #signup-presentation #brand a span {
+  font-size: 22px;
+}
+.signup-div #signup-presentation #brand p {
+  font-size: 14px;
+  margin-top: -6px;
+  font-family: 'ubuntu-L';
+}
+.signup-div #signup-presentation #signup {
+  width: 402px;
+  margin: 50px auto;
+  padding: 50px 50px 100px;
+  border: 1px solid #27ae60;
+  border-radius: 3px;
+}
+.signup-div #signup-presentation #signup #signup-error {
+  list-style: none;
+  color: red;
+  margin-bottom: 20px;
+}
+.signup-div #signup-presentation #signup a {
+  font-size: 26px;
+  padding-bottom: 20px;
+  display: block;
+}
+.signup-div #signup-presentation #signup input {
+  border-radius: 3px;
+  border: 1px solid #27ae60;
+  margin-bottom: 25px;
+  width: 300px;
+  height: 48px;
+  padding: 0 20px;
+  background-color: #27ae60;
+  color: #fff;
+}
+.signup-div #signup-presentation #signup button {
+  background: none repeat scroll 0 0 padding-box #27ae60;
+  border-radius: 3px;
+  color: #fff;
+  display: block;
+  font-family: 'ubuntu-R';
+  font-weight: 700;
+  padding: 1em 2.618em;
+  text-transform: uppercase;
+  border: none;
+  float: right;
+}
+.signup-div #signup-presentation #signup button:hover {
+  color: #27ae60;
+  background-color: #fff;
+  cursor: pointer;
+}
+.signup-div #signup-footer {
+  width: 960px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.signup-div #signup-footer div {
+  display: inline;
+}
+.signup-div #signup-footer div span,
+.signup-div #signup-footer div a {
+  color: #27ae60;
+}
+.signup-div #signup-footer div span:hover,
+.signup-div #signup-footer div a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.signup-div #signup-footer ul {
+  float: right;
+  list-style: none;
+}
+.signup-div #signup-footer ul li {
+  display: inline-block;
+}
+.signup-div #signup-footer ul li a:hover {
+  color: #27ae60;
+  cursor: pointer;
+}
+.signup-div #signup-footer ul li:after {
+  content: "|";
+  padding: 0 20px;
+  color: #dddddd;
+}
+.signup-div #signup-footer ul li:last-child:after {
   content: none;
 }
