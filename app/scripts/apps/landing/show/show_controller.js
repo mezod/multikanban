@@ -6,9 +6,20 @@ define([
 		Show.Controller = {
 			showLanding: function(){
 
-				var landingShowView = new View.Landing();
+				require(["entities/landingstats"], function(){
+					var landingstatsFetch = App.request("landingstats:entities");
+					
+					$.when(landingstatsFetch)
+					 .done(function(landingstats){
 
-				App.contentRegion.show(landingShowView);
+						var landingShowView = new View.Landing({
+							landingstats: landingstats
+						});
+
+						App.contentRegion.show(landingShowView);
+					});
+
+				});
 			}
 		}
 	});
