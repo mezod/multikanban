@@ -151,8 +151,6 @@
 	#landing-preview{
 		width: 960px;
 		margin: 0 auto;
-		padding-bottom: 100px;
-		border-bottom: 1px solid @grey;
 
 		div{
 			width: 40%;
@@ -195,7 +193,20 @@
 		}
 
 		img{
-			width: 100%
+			display: block;
+		    height: auto;
+		    margin: 0;
+		    width: 100%;
+		}
+
+		.screen-bezel{
+			background-color: #000;
+		    border-radius: 12px;
+		    overflow: hidden;
+		    width: 100%;
+		    display: block;
+		    margin: 0;
+		    padding: 26px;
 		}
 	}
 
@@ -603,5 +614,37 @@
 				}
 			}
 		}	
+	}
+}
+
+/* ABOUT / HELP */
+
+#about, #help{
+	width: 700px;
+	font-size: 16px;
+	margin-left: 28px;
+	text-align: justify;
+	margin-bottom: 100px;
+
+	h2{
+		font-size: 26px;
+		color: @green;
+	}
+
+	h3{
+		font-size: 22px;
+		color: @green;
+	}
+
+	p{
+		margin-top: 20px;
+	}
+
+	a{
+		color: @green;
+
+		&:hover{
+			text-decoration: underline;
+		}
 	}
 }

@@ -45,8 +45,10 @@
 		<div class="quote">
 			<a>Divide and conquer.</a><br/>
 			<p>Julius Caesar</p>
-         </div>
-		<img src="https://d2cxspbh1aoie1.cloudfront.net/assets/nocturn/default_promo_screenshot-e0486cc1c34ea9d41eab4b7867066036.jpg"/>
+        </div>
+        <div class="screen-bezel">
+			<img src="/multikanban/app/images/preview.png"/>
+		</div>
 	</section>
 	<section id="landing-principles">
 		<div>
