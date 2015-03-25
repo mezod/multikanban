@@ -47,7 +47,7 @@
 			<p>Julius Caesar</p>
         </div>
         <div class="screen-bezel">
-			<img src="/multikanban/app/images/preview.png"/>
+			<img src="images/preview.png"/>
 		</div>
 	</section>
 	<section id="landing-principles">
