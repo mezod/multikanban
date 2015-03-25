@@ -1,1 +1,9 @@
-<a href="#"><%- name %></a>
+<a href="<%- href %>" 
+	<% if (target == "yes") { %> 
+		target="_blank"  
+	<% } else { %>
+		class="<%- href %>"
+	<% } %>
+><%- name %></a>
+
+

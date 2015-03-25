@@ -3,7 +3,7 @@ define([
 ], function(App){
   App.module("SignupApp", function(SignupApp, App, Backbone, Marionette, $, _){
 
-    SignupApp.Router = Marionette.AppRouter.extend({
+    App.Router = Marionette.AppRouter.extend({
       appRoutes: {
         "signup" : "showSignup"
       },
@@ -29,19 +29,19 @@ define([
       }
     };
 
-    SignupApp.on("signup:show", function(){
+    App.on("signup:show", function(){
       console.log("signup:show");
       
       App.navigate("signup");
       API.showSignup();
     });
 
-    SignupApp.addInitializer(function(){
-      new SignupApp.Router({
+    App.addInitializer(function(){
+      new App.Router({
         controller: API
       });
     });
   });
 
-  return App.SignupApp;
+  return App;
 });

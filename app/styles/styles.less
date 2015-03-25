@@ -1,6 +1,10 @@
 body {
 	background-color: white;
 	font-family: "opensans-Light";
+    font-size: 14px;
+    @media (max-width:1200px){ 
+        font-size: 11px;
+    }
 
 	ul{
 		margin: 0;
@@ -262,13 +266,41 @@ html, body, #content, #layout{
     	}   	
     }
 
+    h1{
+        font-size: 31px;
+        margin: 25px 0 0 0;
+        padding: 23px 0 23px 30px;
+        outline: none;
+
+        a{
+            color: @darkgrey;
+            border: 1px solid @grey;
+            padding: 20px;
+
+
+            span{
+                color: @green;
+            }
+
+            &:first-child{
+                //margin-left: 100px;
+            }
+        }
+
+
+    }       
+
     .activity-item{
 
-    	padding: 15px;
+    	padding: 25px 15px 0px 28px;
 
     	a{
     		color: @green;
     	}
+
+        &:first-child{
+            padding-top: 40px;
+        }
     }
 
      > div{

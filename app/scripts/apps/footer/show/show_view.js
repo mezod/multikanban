@@ -11,7 +11,13 @@ define([
 
 		View.Footers = Marionette.CollectionView.extend({
 			tagName: "ul",
-			childView: View.Footer
+			childView: View.Footer,
+
+			triggers: { 
+				"click .home": "home:show",
+				"click .help": "help:show",
+				"click .about": "about:show"
+			}
 		});
 	});
 

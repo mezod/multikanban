@@ -18,7 +18,6 @@ define([
     };
 
     App.on("landing:show", function(){
-      console.log("weee");
       
       App.navigate("");
       API.showLanding();

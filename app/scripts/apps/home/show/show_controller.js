@@ -5,14 +5,22 @@ define([
 	App.module("HomeApp.Show", function(Show, App, Backbone, Marionette, $, _){
 		Show.Controller = {
 			listCompletedTasks: function(){
-				require(["entities/completedtasks"], function(){
-					var completedTasks = App.request("home:entities");
+				require(["entities/completedtasks", "entities/stats"], function(){
+					var completedTasksFetch = App.request("home:entities");
+					var statsFetch = App.request("stats:entities");
 
-					var homeShowView = new View.Homes({
-						collection: completedTasks
+					
+
+					$.when(completedTasksFetch, statsFetch)
+					 .done(function(completedTasks, stats){
+
+					 	var homeShowView = new View.Homes({
+							collection: completedTasks,
+							stats: stats
+						});
+
+						App.mainLayout.mainRegion.show(homeShowView);
 					});
-
-					App.mainLayout.mainRegion.show(homeShowView);
 				});
 			}
 		}

@@ -1,1 +1,1 @@
-<a class="activity-date"><%- date %></a> Completed the task <a class="activity-task"><%- task %></a> from <a class="activity-kanban"><%- kanban %></a> !
+<a class="activity-date"><%- dateCompleted %></a> Completed the task <a class="activity-task"><%- text %></a> !

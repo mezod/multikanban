@@ -6,6 +6,13 @@ define([
 
 		View.Signup = Marionette.ItemView.extend({
 			template: signupTpl,
+			className: "signup-div",
+
+			triggers: { 
+				"click .brand": "landing:show",
+				"click .login": "login:show",
+				"click .signup": "signup:show"
+			},
 
 			events: {
 				"click button": "signupClicked"
@@ -16,6 +23,16 @@ define([
 
 				e.preventDefault();
 				this.trigger("signup");
+			},
+
+			onRender: function(){
+
+				require(["bootstrap"], function(){
+					$('body').tooltip({   
+					   selector: '[data-toggle=tooltip]',
+					   container: 'body'
+					});
+				});
 			}
 		});
 	});

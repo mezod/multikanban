@@ -315,7 +315,7 @@ define([
 		    	console.log("column:customsort");
 		    	var column = this.columnId;
 		    	this.options.viewComparator = 'position';
-		    	this.collection.sort();
+		    	this.resortView();
 		    	this.activateStyles(column,'.customSort');
 		    },
 
@@ -332,7 +332,7 @@ define([
 		    		return (new Date(model.get('dateCreated'))).getTime(); 
 		    	};
 		    	
-		    	this.collection.sort();
+		    	this.resortView();
 		    },
 
 		    dateCreatedSortInverse: function(e){
@@ -347,7 +347,7 @@ define([
 		    	this.options.viewComparator = function(model) { 
 		    		return -(new Date(model.get('dateCreated'))).getTime(); 
 		    	};
-		    	this.collection.sort();		    	
+		    	this.resortView();		    	
 		   	},
 
 		    dateCompletedSort: function(e){
@@ -362,7 +362,7 @@ define([
 		    	this.options.viewComparator = function(model) { 
 		    		return (new Date(model.get('dateCompleted'))).getTime(); 
 		    	};
-		    	this.collection.sort();	
+		    	this.resortView();	
 		    },
 
 		    dateCompletedSortInverse: function(e){
@@ -377,7 +377,7 @@ define([
 		    	this.options.viewComparator = function(model) { 
 		    		return -(new Date(model.get('dateCompleted'))).getTime(); 
 		    	};
-		    	this.collection.sort();	
+		    	this.resortView();	
 			},
 
 		    activateStyles: function(column, id){
