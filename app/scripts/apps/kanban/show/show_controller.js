@@ -77,6 +77,7 @@ define([
 				               				elem.attributes.position++;
 				               			});
 				               			backlogTasks.add(newTask);
+				               			backlog.render();
 				               		});
 				                });
 				            });
