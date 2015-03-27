@@ -7,7 +7,7 @@ module.exports = function(grunt) {
       mainConfigFile: 'app/scripts/main.js',
       baseUrl: 'app/scripts',
       include: ['main'],
-      out: 'dist/main.min.js',
+      out: 'app/scripts/main.min.js',
       removeCombined: false,
       findNestedDependencies: true
   }
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
           },
           files: {
             //compiling base.less into main.min.css
-            "./dist/main.min.css": "./app/styles/base.less"
+            "./app/styles/main.min.css": "./app/styles/base.less"
           }
         }
     },

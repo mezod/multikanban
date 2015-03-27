@@ -31,7 +31,7 @@ require.config({
   		exports: 'Marionette',
   		deps: ['backbone']
   	},
-  },
+  }, 
   // deps: ['app']
 });
 
