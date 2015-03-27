@@ -35,8 +35,6 @@ define([
 			            email: $('#inputEmail').val()
 			        };
 
-			        console.log(JSON.stringify(formValues));
-
 			        $.ajax({
 			            url:url,
 			            type:'POST',
@@ -44,13 +42,11 @@ define([
 			            contentType: "application/json",
 			            data: JSON.stringify(formValues),
 			            success:function (data) {
-			                console.log(["Signup: ", data]);
 			               
 			                if(data.error) {  // If there is an error, show the error messages
 			                    console.log('error data');
 			                }
 			                else { // If not, send them to the home page
-			                	console.log(data);
 
 			                	// Saving the user in the localStorage
 			                	window.localStorage.setItem('multikanban user', JSON.stringify(data));
@@ -61,7 +57,6 @@ define([
 			            },
 			            error:function(data){
 			            	if(data.responseJSON.errors){
-			            		console.log(data.responseJSON.errors);
 
 			            		for (var key in data.responseJSON.errors){
 			            			$('#signup-error').append('<li>'+ data.responseJSON.errors[key] +'</li>');

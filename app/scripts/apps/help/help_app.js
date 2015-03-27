@@ -10,7 +10,7 @@ define([
 
       execute: function(attributes, options){
         if(App.loggedInUser === undefined){
-          console.log('no loggedInUser');
+
           App.trigger("landing:show");
           return;
         } 
@@ -30,7 +30,6 @@ define([
     };
 
     App.on("help:show", function(){
-      console.log("weee");
       
       App.navigate("help");
       API.showHelp();

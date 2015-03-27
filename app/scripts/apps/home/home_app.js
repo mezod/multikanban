@@ -9,9 +9,9 @@ define([
       },
 
       execute: function(attributes, options){
-        console.log('potato');
+
         if(App.loggedInUser === undefined){
-          console.log('no loggedInUser');
+
           App.trigger("landing:show");
           return;
         } 

@@ -63,11 +63,7 @@ define([
 				e.stopPropagation();
 
 				var h1 = $('header h1');
-				var title = h1.get([0]).firstChild.textContent;		
-
-				console.log("TITLE -- " + title);
-				console.log("this");
-				console.log(this);		
+				var title = h1.get([0]).firstChild.textContent;			
 
 		    	this.trigger("title:kanban:edit", this.model, title);
 
@@ -233,9 +229,7 @@ define([
 
 			drop: function(event, index, sender, placeholder){
 		    	console.log("drop");
-		    	console.log(index);
-		    	console.log(sender);
-		    	console.log(placeholder);
+
 		    	this.trigger('task:change', this.model, index, sender, placeholder);
 		    }
 		});
@@ -298,7 +292,7 @@ define([
 
 		    submitTask: function(){
 		    	var text = $('#newTask').val();
-		    	console.log(text);
+
 		    	this.trigger("task:submit", text);
 
 		    	window.setTimeout(function(){
@@ -425,15 +419,7 @@ define([
 					 });
 				});
 
-			   	
-				
-
 			   	this.ui.counter.text(this.collection.length);
-			   	console.log(this.collection.length);
-			   	// console.log(this.columnId);
-			   	// console.log(this.cid);
-			   	// console.log(this);
-			   	//debugger;
 			}
 
 		});

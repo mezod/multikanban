@@ -19,7 +19,6 @@ define([
 			},
 
 			signupClicked: function(e){
-				console.log("signup Button Clicked");
 
 				e.preventDefault();
 				this.trigger("signup");

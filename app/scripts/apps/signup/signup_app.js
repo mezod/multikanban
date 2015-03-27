@@ -30,7 +30,6 @@ define([
     };
 
     App.on("signup:show", function(){
-      console.log("signup:show");
       
       App.navigate("signup");
       API.showSignup();

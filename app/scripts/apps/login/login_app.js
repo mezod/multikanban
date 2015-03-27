@@ -11,7 +11,7 @@ define([
       execute: function(attributes, options){
 
         if(!! App.loggedInUser){
-          console.log("show home");
+
           App.trigger("home:show");
           return;
         }
@@ -30,7 +30,6 @@ define([
     };
 
     App.on("login:show", function(){
-      console.log("login:show");
       
       App.navigate("login");
       API.showLogin();

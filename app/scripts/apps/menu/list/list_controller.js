@@ -30,16 +30,12 @@ define([
 					kanbansListView.on("kanban:new", function(){
 						console.log("kanban:new");
 		                var newKanban = App.request("kanban:entity:new");
-		                console.log("AFTER REQUEST --> ");
-		                console.log(newKanban);
 		                
-
 		                kanbansListView.once("kanban:submit", function(title){
 		                	console.log("kanban:submit");
 		                	var data = { 'title' : title };
 
 		               		newKanban.save(data).then(function(){
-		               			console.log(newKanban);
 		               			kanbans.add(newKanban);
 
 		               			var href = "kanban/"+newKanban.id;
@@ -84,27 +80,18 @@ define([
 		            kanbansListView.on("childview:kanban:edit", function(ChildView, model, title){
 		            	console.log("kanban:edit");
 		            	var data = { 'title' : title };
-		            	console.log("args");
-		            	console.log(model);
 		            	
-		            	model.save(data);
-	               		//App.trigger("menu:show");
-	               		
+		            	model.save(data);		
 		            });
 
 		            kanbansListView.on("childview:kanban:editPosition", function(ChildView, model, position){
 		            	console.log("childview:kanban:editPosition");
 		            	var data = { 'position' : position };
-		            	console.log("args");
-		            	console.log(model);
 		            	
 		            	model.save(data);
-	               		//App.trigger("menu:show");
-	               		
 		            });
 
-					App.mainLayout.headerRegion.show(kanbansListView);
-					
+					App.mainLayout.headerRegion.show(kanbansListView);	
 				});
 			}
 		}

@@ -72,8 +72,7 @@ define([
 
 				               		newTask.save(data).then(function(){
 				               			backlogTasks.each(function(elem){
-				               				console.log(elem);
-				               				console.log(elem.attributes.position);
+				               				
 				               				elem.attributes.position++;
 				               			});
 				               			backlogTasks.add(newTask);
@@ -243,16 +242,12 @@ define([
 
             	oldIndex = model.attributes.position;
 
-            	//model.save(data);
-            	console.log(ChildView);
-
             	//frontend
             	//model right state and index (by default when PUT)
             	var that = this;
             	//rerender task view to show date completed
             	$.when(model.save(data)).done(function(){
-            		console.log(model);
-            		console.log(ChildView);
+
             		ChildView.render();
 
             		//other tasks in to and from update index
@@ -307,7 +302,6 @@ define([
 
 	            	//update numElems
 	            	if(from != to){
-	            		//console.log($('#'+from+"-column").find('#counter'));
 	            		var counter = $('#'+from+"-column").find('#counter').get([0]).textContent;
 	            		counter = parseInt(counter)-1;
 	            		$('#'+from+"-column").find('#counter').text(counter);
@@ -324,15 +318,12 @@ define([
 
             updatePosition: function(collection, oldIndex, newIndex){
             	collection.each(function (model, index) {
-		            console.log("initfrom"); 
-		            console.log(model.attributes.position); 
+
 		            var position = index;
 		            if (index >= newIndex) {
 		                position += 1;
 		            }
 		            model.set('position', position);
-		            console.log("endfrom"); 
-		            console.log(model.attributes.position); 
 		        });  
         	}
 		}

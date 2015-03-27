@@ -14,7 +14,6 @@ define([
     //   API.listFooters();
     // });
     App.on("footer:show", function(){
-        console.log("footer:show");
         
       API.listFooters();
     });

@@ -67,10 +67,7 @@ define([
 				e.stopPropagation();
 
 				var a = $(e.currentTarget.parentNode.parentNode);
-				var title = a.get([0]).firstChild.textContent;		
-
-				console.log("this");
-				console.log(this);		
+				var title = a.get([0]).firstChild.textContent;			
 
 		    	this.trigger("kanban:edit", this.model, title);
 
@@ -203,7 +200,6 @@ define([
 
 		    kanbanSubmitted: function(){
 		    	var title = $('#newKanban').val();
-		    	console.log(title);
 		    	this.trigger("kanban:submit", title);
 
 		    	window.setTimeout(function(){

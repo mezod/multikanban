@@ -32,14 +32,14 @@ define(["marionette"], function(Marionette){
 	        		"apps/help/help_app"
 	        		], function(){
 	        	if(window.localStorage["multikanban user"]){
-					console.log('localStorage exists');
+
 					App.loggedInUser = JSON.parse(window.localStorage.getItem('multikanban user'));
 				}
 
 	        	Backbone.history.start({pushState: true});
 
 	        	if(App.getCurrentRoute() === undefined){
-		        	console.log("undefined current route");
+
 		        	App.trigger("landing:show");
 		        }
 	        }); 
