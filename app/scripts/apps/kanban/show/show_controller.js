@@ -106,6 +106,10 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
+				            todo.on("childview:task:delete", function(ChildView, args){
+				            	Show.Controller.deleteTask(ChildView, args);
+				            });
+
 				            todo.on("childview:task:change", function(ChildView, model, index, from, to){
 				            	console.log("todo:change:task");
 				            	Show.Controller.changeTask(ChildView, model, index, from, to);
@@ -123,6 +127,10 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
+				            doing.on("childview:task:delete", function(ChildView, args){
+				            	Show.Controller.deleteTask(ChildView, args);
+				            });
+
 				            doing.on("childview:task:change", function(ChildView, model, index, from, to){
 				            	console.log("doing:change:task");
 				            	Show.Controller.changeTask(ChildView, model, index, from, to);
@@ -138,6 +146,10 @@ define([
 
 							onhold.on("childview:task:save", function(ChildView, model, text){
 				            	Show.Controller.saveTask(ChildView, model, text);
+				            });
+
+				            onhold.on("childview:task:delete", function(ChildView, args){
+				            	Show.Controller.deleteTask(ChildView, args);
 				            });
 
 				            onhold.on("childview:task:change", function(ChildView, model, index, from, to){
@@ -161,6 +173,10 @@ define([
 				            	Show.Controller.saveTask(ChildView, model, text);
 				            });
 
+				            done.on("childview:task:delete", function(ChildView, args){
+				            	Show.Controller.deleteTask(ChildView, args);
+				            });
+
 				            done.on("childview:task:change", function(ChildView, model, index, from, to){
 				            	console.log("done:change:task");
 				            	Show.Controller.changeTask(ChildView, model, index, from, to);
@@ -180,6 +196,10 @@ define([
 
 							archive.on("childview:task:save", function(ChildView, model, text){
 				            	Show.Controller.saveTask(ChildView, model, text);
+				            });
+
+				            archive.on("childview:task:delete", function(ChildView, args){
+				            	Show.Controller.deleteTask(ChildView, args);
 				            });
 
 				            archive.on("childview:task:change", function(ChildView, model, index, from, to){
