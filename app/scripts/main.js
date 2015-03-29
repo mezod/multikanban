@@ -32,7 +32,7 @@ require.config({
   		deps: ['backbone']
   	},
   }, 
-  // deps: ['app']
+  // deps: ['app'] 
 });
 
 require(['app'], function(App) {
