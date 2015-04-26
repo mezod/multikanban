@@ -3,6 +3,12 @@ multikanban
 
 A simple kanban for multiple personal projects.
 
+Live version at [www.multikanban.com](http://www.multikanban.com)
+
+#Screenshot
+
+![Screenshot](http://multikanban.com/images/preview.png)
+
 #Instructions
 
     git clone git@github.com:mezod/multikanban.git
