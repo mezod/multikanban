@@ -18,7 +18,9 @@ Live version at [www.multikanban.com](http://www.multikanban.com)
     if node was installed using homebrew then you might need to:
     npm install -g grunt-cli
     
-    Note: This is the frontend js app and requires of the backend API you can find [here](https://github.com/mezod/multikanban-api).
+#Note
+
+This is the frontend js app and requires of the backend API you can find [here](https://github.com/mezod/multikanban-api).
   
 
 #Techs
