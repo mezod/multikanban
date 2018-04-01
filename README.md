@@ -20,7 +20,7 @@ Live version at [www.multikanban.com](http://www.multikanban.com)
     
 #Note
 
-This is the frontend js app and requires of the backend API you can find [here](https://github.com/mezod/multikanban-api).
+This is the frontend javascript application, the backend API requirements can be found [here](https://github.com/mezod/multikanban-api).
   
 
 #Techs
