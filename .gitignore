@@ -1,3 +1,4 @@
 app/scripts/vendor
 node_modules
 dist
+.idea/

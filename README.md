@@ -5,11 +5,11 @@ A simple kanban for multiple personal projects.
 
 Live version at [www.multikanban.com](http://www.multikanban.com)
 
-#Screenshot
+# Screenshot
 
 ![Screenshot](http://multikanban.com/images/preview.png)
 
-#Instructions
+# Instructions
 
     git clone git@github.com:mezod/multikanban.git
     npm install
@@ -18,12 +18,12 @@ Live version at [www.multikanban.com](http://www.multikanban.com)
     if node was installed using homebrew then you might need to:
     npm install -g grunt-cli
     
-#Note
+# Note
 
-This is the frontend js app and requires of the backend API you can find [here](https://github.com/mezod/multikanban-api).
+This is the frontend javascript application, the backend API requirements can be found [here](https://github.com/mezod/multikanban-api).
   
 
-#Techs
+# Techs
 
     npm
     bower
